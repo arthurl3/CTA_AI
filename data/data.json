@@ -1,0 +1,359 @@
+{
+    "cards": [
+        {
+            "id": 0,
+            "title": "OSEF",
+            "element": 6,
+            "power": 450
+        },
+        {
+            "id": 1,
+            "title": "OSEF",
+            "element": 6,
+            "power": 490
+        },
+        {
+            "id": 2,
+            "title": "OSEF",
+            "element": 6,
+            "power": 505
+        },
+        {
+            "id": 3,
+            "title": "OSEF",
+            "element": 6,
+            "power": 680
+        },
+        {
+            "id": 4,
+            "title": "OSEF",
+            "element": 6,
+            "power": 465
+        },
+        {
+            "id": 5,
+            "title": "OSEF",
+            "element": 6,
+            "power": 720
+        },
+        {
+            "id": 6,
+            "title": "OSEF",
+            "element": 6,
+            "power": 735
+        },
+        {
+            "id": 7,
+            "title": "OSEF",
+            "element": 5,
+            "power": 460
+        },
+        {
+            "id": 8,
+            "title": "OSEF",
+            "element": 5,
+            "power": 480
+        },
+        {
+            "id": 9,
+            "title": "OSEF",
+            "element": 5,
+            "power": 470
+        },
+        {
+            "id": 10,
+            "title": "OSEF",
+            "element": 5,
+            "power": 480
+        },
+        {
+            "id": 11,
+            "title": "OSEF",
+            "element": 5,
+            "power": 500
+        },
+        {
+            "id": 12,
+            "title": "OSEF",
+            "element": 5,
+            "power": 680
+        },
+        {
+            "id": 13,
+            "title": "OSEF",
+            "element": 5,
+            "power": 725
+        },
+        {
+            "id": 14,
+            "title": "OSEF",
+            "element": 5,
+            "power": 700
+        },
+        {
+            "id": 15,
+            "title": "OSEF",
+            "element": 4,
+            "power": 455
+        },
+        {
+            "id": 16,
+            "title": "OSEF",
+            "element": 4,
+            "power": 680
+        },
+        {
+            "id": 17,
+            "title": "OSEF",
+            "element": 4,
+            "power": 495
+        },
+        {
+            "id": 18,
+            "title": "OSEF",
+            "element": 4,
+            "power": 705
+        },
+        {
+            "id": 19,
+            "title": "OSEF",
+            "element": 4,
+            "power": 720
+        },
+        {
+            "id": 20,
+            "title": "OSEF",
+            "element": 4,
+            "power": 690
+        },
+        {
+            "id": 21,
+            "title": "OSEF",
+            "element": 3,
+            "power": 450
+        },
+        {
+            "id": 22,
+            "title": "OSEF",
+            "element": 3,
+            "power": 460
+        },
+        {
+            "id": 23,
+            "title": "OSEF",
+            "element": 3,
+            "power": 475
+        },
+        {
+            "id": 24,
+            "title": "OSEF",
+            "element": 3,
+            "power": 495
+        },
+        {
+            "id": 25,
+            "title": "OSEF",
+            "element": 3,
+            "power": 680
+        },
+        {
+            "id": 26,
+            "title": "OSEF",
+            "element": 3,
+            "power": 710
+        },
+        {
+            "id": 27,
+            "title": "OSEF",
+            "element": 3,
+            "power": 720
+        },
+        {
+            "id": 28,
+            "title": "OSEF",
+            "element": 3,
+            "power": 695
+        },
+        {
+            "id": 29,
+            "title": "OSEF",
+            "element": 2,
+            "power": 455
+        },
+        {
+            "id": 30,
+            "title": "OSEF",
+            "element": 2,
+            "power": 470
+        },
+        {
+            "id": 31,
+            "title": "OSEF",
+            "element": 2,
+            "power": 535
+        },
+        {
+            "id": 32,
+            "title": "OSEF",
+            "element": 2,
+            "power": 680
+        },
+        {
+            "id": 33,
+            "title": "OSEF",
+            "element": 2,
+            "power": 725
+        },
+        {
+            "id": 34,
+            "title": "OSEF",
+            "element": 2,
+            "power": 740
+        },
+        {
+            "id": 35,
+            "title": "OSEF",
+            "element": 1,
+            "power": 455
+        },
+        {
+            "id": 36,
+            "title": "OSEF",
+            "element": 1,
+            "power": 475
+        },
+        {
+            "id": 37,
+            "title": "OSEF",
+            "element": 1,
+            "power": 500
+        },
+        {
+            "id": 38,
+            "title": "OSEF",
+            "element": 1,
+            "power": 490
+        },
+        {
+            "id": 39,
+            "title": "OSEF",
+            "element": 1,
+            "power": 680
+        },
+        {
+            "id": 40,
+            "title": "OSEF",
+            "element": 1,
+            "power": 730
+        },
+        {
+            "id": 41,
+            "title": "OSEF",
+            "element": 0,
+            "power": 465
+        },
+        {
+            "id": 42,
+            "title": "OSEF",
+            "element": 0,
+            "power": 485
+        },
+        {
+            "id": 43,
+            "title": "OSEF",
+            "element": 0,
+            "power": 520
+        },
+        {
+            "id": 44,
+            "title": "OSEF",
+            "element": 0,
+            "power": 680
+        },
+        {
+            "id": 45,
+            "title": "OSEF",
+            "element": 0,
+            "power": 720
+        },
+        {
+            "id": 46,
+            "title": "OSEF",
+            "element": 0,
+            "power": 735
+        },
+        {
+            "id": 47,
+            "title": "OSEF",
+            "element": 0,
+            "power": 695
+        }
+    ],
+    "decks": [
+        [
+            {
+                "id": 1
+            },
+            {
+                "id": 2
+            },
+            {
+                "id": 3
+            },
+            {
+                "id": 4
+            },
+            {
+                "id": 5
+            },
+            {
+                "id": 6
+            },
+            {
+                "id": 7
+            },
+            {
+                "id": 8
+            },
+            {
+                "id": 9
+            },
+            {
+                "id": 10
+            },
+            {
+                "id": 11
+            },
+            {
+                "id": 12
+            },
+            {
+                "id": 13
+            },
+            {
+                "id": 14
+            },
+            {
+                "id": 15
+            },
+            {
+                "id": 20
+            },
+            {
+                "id": 16
+            },
+            {
+                "id": 17
+            },
+            {
+                "id": 18
+            },
+            {
+                "id": 19
+            },
+            {
+                "id": 20
+            }
+        ]
+    ]
+}

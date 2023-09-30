@@ -2,11 +2,8 @@ class Board:
     def __init__(self, board=None):
         # Elements : 0-Nature -> 1-Earth -> 2-Darkness until 6-Air
         #A card is defined by its element and its power with a tuple (struct) like this : (2, 450) for a Darkness with 450 power
-        self.board = [-1, -1, -1, -1
-                 -1, -1, -1, -1
-                 -1, -1, -1, -1
-                 -1, -1, -1, -1]
-        self.player_turn=1 #1 ou -1 to alternate
+        self.board = [-1 for i in range(16)]
+        self.player_turn= 1 #1 ou -1 to alternate
         self.score_to_win = 65
 
     def getCoordinates(self, index):
@@ -69,9 +66,9 @@ class Board:
         return 0
 
     def getTrinity(self, card):
+        pass
 
-
-    #Logic when a player play a card
+    # Logic when a player play a card
     def playCard(self, position, card):
         self.board[position] = card
 

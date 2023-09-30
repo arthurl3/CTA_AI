@@ -1,5 +1,9 @@
-class Card:
-    def __init__(self, element, power):
+import json
+
+
+class Card():
+    def __init__(self, id, element, power):
+        self.id = id
         self.element = element
         self.initial_power = power
         self.current_power = power
@@ -19,4 +23,18 @@ class Card:
     def addAffinity(self, affinity):
         if not affinity in self.list_affinity:
             self.list_affinity.append(affinity)
+
+
+    def __str__(self):
+        return f"id : {self.id} - element : {self.element} - power : {self.initial_power}"
+
+    # never used
+    def serialize(self):
+        return json.dumps(
+            {
+            'id': self.id,
+            'element': self.element,
+            'power': self.initial_power
+            }
+        )
 
