@@ -3,6 +3,8 @@ import customtkinter
 from functools import partial
 from component.deckbuilderarea import DeckbuilderArea
 from component.gamearea import GameArea
+from component.matchparametersarea import MatchParametersArea
+
 
 class App(customtkinter.CTk):
     DARK_MODE = "dark"
@@ -63,7 +65,7 @@ class App(customtkinter.CTk):
         if frame_id == self.FRAMEID_DECKBUILDER:
             App.frames[frame_id] = DeckbuilderArea(master=self)
         elif frame_id == self.FRAMEID_GAMEAREA:
-            App.frames[frame_id] = GameArea(master=self)
+            App.frames[frame_id] = MatchParametersArea(master=self)
 
     # method to change component
     def toggle_frame_by_id(self, frame_id):
