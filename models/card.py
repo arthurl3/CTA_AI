@@ -1,6 +1,4 @@
 import json
-
-
 class Card():
     def __init__(self, id, element, power):
         self.id = id

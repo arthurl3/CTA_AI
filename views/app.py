@@ -1,11 +1,10 @@
 import tkinter
 import customtkinter
 from functools import partial
-from component.deckbuilderarea import DeckbuilderArea
-from component.gamearea import GameArea
-from component.matchparametersarea import MatchParametersArea
 
-
+from config import Config
+from views.deckbuilderview import DeckbuilderView
+from views.matchsettingsview import MatchSettingsView
 class App(customtkinter.CTk):
     DARK_MODE = "dark"
     FRAMEID_DECKBUILDER = "frame1"
@@ -22,7 +21,7 @@ class App(customtkinter.CTk):
         self.title("CTA AI")
 
         # screen size
-        self.geometry("1200x600")
+        self.geometry(f"{Config.WINDOW_WIDTH}x{Config.WINDOW_HEIGHT}")
 
         # root!
         main_container = customtkinter.CTkFrame(self, corner_radius=8)
@@ -38,10 +37,9 @@ class App(customtkinter.CTk):
         self.right_side_panel.configure(border_width=1)
         self.right_side_panel.configure(border_color="#323232")
 
-        #Navigation
+        # Navigation
         self.create_nav(self.left_side_panel, self.FRAMEID_DECKBUILDER)
         self.create_nav(self.left_side_panel, self.FRAMEID_GAMEAREA)
-
 
     # button to select the correct frame
     def frame_selector_bt(self, parent, frame_id):
@@ -63,13 +61,12 @@ class App(customtkinter.CTk):
     # create the frame
     def create_frame(self, frame_id):
         if frame_id == self.FRAMEID_DECKBUILDER:
-            App.frames[frame_id] = DeckbuilderArea(master=self)
+            App.frames[frame_id] = DeckbuilderView(master=self)
         elif frame_id == self.FRAMEID_GAMEAREA:
-            App.frames[frame_id] = MatchParametersArea(master=self)
+            App.frames[frame_id] = MatchSettingsView(master=self)
 
-    # method to change component
+    # method to change views
     def toggle_frame_by_id(self, frame_id):
-
         if App.frames[frame_id] is not None:
             if App.current is App.frames[frame_id]:
                 App.current.pack_forget()

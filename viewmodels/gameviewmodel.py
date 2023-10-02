@@ -1,4 +1,4 @@
-class Board:
+class GameViewModel:
     def __init__(self, board=None):
         # Elements : 0-Nature -> 1-Earth -> 2-Darkness until 6-Air
         #A card is defined by its element and its power with a tuple (struct) like this : (2, 450) for a Darkness with 450 power
