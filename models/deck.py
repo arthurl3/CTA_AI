@@ -1,8 +1,10 @@
+import copy
 from random import shuffle
 
 class Deck:
-    def __init__(self, cards):
-        self.cards = cards[:]
+    def __init__(self, name, cards):
+        self.name = name
+        self.cards = copy.deepcopy(cards)
         self.index = -1
         shuffle(self.cards)
 

@@ -46,10 +46,9 @@ class VueCard(customtkinter.CTkButton):
         self.configure(text=card.current_power)
 
     def onclick(self):
-        print(self.card.id)
-        self.configure(fg_color="white")
-        self.configure(bg_color="white")
-        self.configure(text_color="white")
+        # self.configure(fg_color="white")
+        # self.configure(bg_color="white")
+        # self.configure(text_color="white")
         self.f_parent(self.card)
 
 

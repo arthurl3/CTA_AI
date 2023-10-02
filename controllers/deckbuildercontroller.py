@@ -9,10 +9,13 @@ class DeckBuilderController:
         self.cardlist = loader.load_cards()
 
     def create_deck(self):
-        print(f"number of cards selected : {len(self.deck)}")
         if len(self.deck) == 30:
             loader.insert_deck(self.deck)
-
+        else:
+            print(f"number of cards selected : {len(self.deck)}. Asked 30")
 
     def add_card_to_deck(self, card):
-        self.deck.append({"id": card.id})
+        self.deck.append(card.id)
+
+    def remove_card(self, card):
+        self.deck.remove(card.id)
