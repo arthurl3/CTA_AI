@@ -1,12 +1,11 @@
 import loader
-from viewmodels.cardviewmodel import CardViewModel
+from models.card import Card
 from views.widgets.cardwidget import CardWidget
 
 class DeckBuilderViewModel:
     def __init__(self, deckbuilderview):
 
         self.view = deckbuilderview
-
         # Liste des cartes choisies du deck
         self.selected_cardviews = []
 
@@ -23,7 +22,7 @@ class DeckBuilderViewModel:
         # On ajoute la carte seulement si puissance ≤ DECK_POWER_MAX et n_cards < DECK_N_CARDS_MAX
         if len(self.selected_cardviews) < 30:
             cardview = CardWidget(master=self.view.deckarea, card_viewmodel=card.card_viewmodel)
-            cardview.grid(row=self.deckarea_y, column=self.deckarea_x, padx=1, pady=1)
+            cardview.grid(row=self.deckarea_y, column=self.deckarea_x, padx=4, pady=4, sticky="nw")
             # Add delete method when clicked
             cardview.configure(command=lambda: self.remove_card_from_deck(cardview))
 
@@ -71,13 +70,13 @@ class DeckBuilderViewModel:
 
     # add list of all cards into this views
     def draw_cardselector(self):
-        self.all_cardviews = [CardWidget(master=self.view.cardselector, card_viewmodel=CardViewModel(card)) \
+        self.all_cardviews = [CardWidget(master=self.view.cardselector, card=card) \
                               for card in self.cards]
         x, y = 0, 0
         for cardview in self.all_cardviews:
             cardview.grid(row=y, column=x, padx=1, pady=1)
-            cardview.configure(command=lambda: self.add_card_to_deck(cardview))
-            if (x + 1) % 20 == 0:
+            cardview.configure(command=lambda c=cardview: self.add_card_to_deck(c))
+            if (x + 1) % 15 == 0:
                 x = 0
                 y += 1
             else:

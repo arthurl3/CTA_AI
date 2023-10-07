@@ -2,7 +2,6 @@ import json
 from config import Config
 from models.card import Card
 import copy
-from models.deck import Deck
 
 # Return a list of all existing cards object
 def load_cards():
@@ -28,30 +27,23 @@ def load_decks():
 # Return an object deck by binding the deck name from the json data file list of decks
 def load_deck(deck_index):
     card_list = load_cards()
-    name = ""
     deck_cards = []
     deck = {}
-
-    # Chargement des cartes
-    with open(Config.CARDS_DATA_PATH) as file:
-        data = json.load(file)
-        card_list = data['cards']
 
     with open(Config.DECKS_DATA_PATH) as file:
         data = json.load(file)
 
-        for d in data['decks']:
-            if d['name'] == str(deck_index):
-                deck = d
-
+    for d in data['decks']:
+        if d['name'] == str(deck_index):
+            deck = d
 
     #Get the list of card id
     for card_id in deck['cards']:
         for c in card_list:
-            if c == card_id:
+            if c.id == card_id:
                 deck_cards.append(copy.deepcopy(c))
 
-    #return Deck(deck['name'], deck['cards'])
+    return deck_cards
 
 # Insère un deck mais il faut encore insérer le nom à la main (sinon le nom est donné par défaut)
 def insert_deck(cards):

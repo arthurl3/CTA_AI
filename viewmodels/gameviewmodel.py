@@ -1,76 +1,65 @@
+from random import shuffle
+import loader
+from models.card import Card
+from logic.boardgraph import BoardGraph
+
 class GameViewModel:
-    def __init__(self, board=None):
-        # Elements : 0-Nature -> 1-Earth -> 2-Darkness until 6-Air
-        #A card is defined by its element and its power with a tuple (struct) like this : (2, 450) for a Darkness with 450 power
-        self.board = [-1 for i in range(16)]
-        self.player_turn= 1 #1 ou -1 to alternate
-        self.score_to_win = 65
+    def __init__(self, settings, view):
 
-    def getCoordinates(self, index):
-        x = index % 4
-        y = index // 4
-        return x, y
+        self.settings = settings
+        self.view = view
+        self.player = True # True, host to play Else guest
 
-    #Get the adjacent cells of one cell
-    def getAdjacent(self, index):
-        list_adjacent = []
-        (x, y) = self.getCoordinates(index)
-        #Left
-        if x != 0:
-            list_adjacent.append(x - 1)
-        #Right
-        if x != 3:
-            list_adjacent.append(x + 1)
-        #Up
-        if y != 0:
-            list_adjacent.append(y - 1)
-        #Down
-        if y != 3:
-            list_adjacent.append(y + 1)
+        self.board = [Card(-1, 0, 0) for i in range(16)]
+        self.board_graph = BoardGraph()
 
-        return list_adjacent
+        self.deck_host = loader.load_deck(settings.deck_host)
+        self.deck_guest = loader.load_deck(settings.deck_guest)
 
-    #Calculate if a card take another adjacent one
-    def isTaken(self, attacker, defender):
-        return attacker.power > defender.power
+        for card in self.deck_guest:
+            card.owner = False
 
-    #Get the distance between both elements (element 6 and element 1 has a distance of 2 because ->1->2)
-    def getDistance(self, element1, element2):
-        if element1 <= element2:
-            return element2 - element1
-        else:
-            return 7 - element1 + element2
+        shuffle(self.deck_host)
+        shuffle(self.deck_guest)
 
-    #Get element1 vs element2 bonus or malus
-    def getForce(self, element1, element2):
-        match self.getDistance(element1, element2):
-            case 0: return 0
-            case 1: return 150
-            case 2: return 0
-            case 3: return 150
-            case 4: return -150
-            case 5: return 0
-            case 6: return -150
-        return 0
+        # View attributes
+        self.selected_card = None
 
-    #Same as gtForce but return if there is an affinity or not
-    def getAffinity(self, element1, element2):
-        match self.getDistance(element1, element2):
-            case 0: return 0
-            case 1: return 0
-            case 2: return 100
-            case 3: return 0
-            case 4: return 0
-            case 5: return 100
-            case 6: return 0
-        return 0
+    # When a player click on a card in his hand
+    def set_selected(self, card):
+        self.selected_card = card
 
-    def getTrinity(self, card):
-        pass
+    def get_hand(self):
+        return self.deck_host[:6]
 
     # Logic when a player play a card
-    def playCard(self, position, card):
-        self.board[position] = card
+    def play_card(self, position):
+        if self.player and self.selected_card:  # Si l'hote a selectionné une carte à jouer
+            self.board_graph.play_card(self.selected_card, position)
+            self.board = self.board_graph.to_board_array()
+            self.deck_host.remove(self.selected_card)
+            self.player = False
+            self.ai_play() #On fait jouer l'IA
+
+    def ai_play(self):
+        #Random pour l'instant on joue au premier indice disponible
+        for i in range(16):
+            if self.board[i].initial_power == -1:
+                card = self.deck_guest[0] #ai.play() mais on joue la premiere dispo
+                self.board_graph.play_card(card, i)
+                self.board = self.board_graph.to_board_array()
+                self.deck_guest.remove(card)
+                self.player = True
+                self.view.update()
+                break
+
+
+
+
+
+
+
+
 
 
 

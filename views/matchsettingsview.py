@@ -10,7 +10,6 @@ class MatchSettingsView(customtkinter.CTkFrame):
 
         TITLE_FONT = customtkinter.CTkFont(size=20, weight="bold")
         STARTING_PLAYER_FONT = customtkinter.CTkFont(size=15, weight="bold")
-
         self.matchsettings_viewmodel = MatchSettingsViewModel(self)
 
         # configure grid layout
