@@ -6,13 +6,24 @@ import copy
 # Return a list of all existing cards object
 def load_cards():
     #Tris en Debug pour garder le fichier propre
-    remettre_bien_les_ids()
-    remettre_bien_les_elements()
+    sort_cards()
     cards = []
     with open(Config.CARDS_DATA_PATH) as file:
         data = json.load(file)
+
         for card in data['cards']:
-            c = Card(card['id'], card['element'], card['power'])
+
+            type = 0
+            try:
+                type = card['type']
+            except KeyError:
+                pass
+
+            c = None
+            if type == 1:  # Cas d'un terrain
+                c = Card(card['id'], card['element'], card['power'], field=True)
+            else:
+                c = Card(card['id'], card['element'], card['power'])
             cards.append(c)
     return cards
 
@@ -23,7 +34,17 @@ def load_decks():
         data = json.load(file)
         return data['decks']
 
-# !!!!!  A changer !!!!!
+
+def load_card_from_id(id):
+    data = None
+    with open(Config.CARDS_DATA_PATH) as file:
+        data = json.load(file)
+
+    for card in data['cards']:
+        if card['id'] == int(id):
+            return Card(card['id'], card['element'], card['power'])
+
+
 # Return an object deck by binding the deck name from the json data file list of decks
 def load_deck(deck_index):
     card_list = load_cards()
@@ -43,10 +64,11 @@ def load_deck(deck_index):
             if c.id == card_id:
                 deck_cards.append(copy.deepcopy(c))
 
+    deck_cards[0].leader = True
     return deck_cards
 
 # Insère un deck mais il faut encore insérer le nom à la main (sinon le nom est donné par défaut)
-def insert_deck(cards):
+def insert_deck(cards, deck_name, special_ability):
     data = None
     deck = {}
 
@@ -54,8 +76,10 @@ def insert_deck(cards):
     with open(Config.DECKS_DATA_PATH) as file:
         data = json.load(file)
 
-    deck['name'] = str(len(data['decks']) + 1)
+    deck['name'] = deck_name
+    deck['special_ability'] = special_ability
     deck['cards'] = [card for card in cards]
+
 
     # On rouvre en écriture pour mettre à jour les données avec json.dump
     with open(Config.DECKS_DATA_PATH, 'w') as file:
@@ -65,28 +89,23 @@ def insert_deck(cards):
 
 ###### NON PRODUCTION FUNCTION #######
 #Remet de l'ordre dans le fichier data (tri par attribut)
-def remettre_bien_les_elements():
-    cards = []
+def sort_cards():
     data = None
+
     with open(Config.CARDS_DATA_PATH) as file:
         data = json.load(file)
+        data['cards'] = sorted(data['cards'], key=lambda k: k.get('power', 0), reverse=False)
         data['cards'] = sorted(data['cards'], key=lambda k: k.get('element', 0), reverse=True)
 
-    with open(Config.CARDS_DATA_PATH, 'w') as file:
-        json.dump(data, file, indent=4)
-    # for line in lines:
-    #     print(line)
-
-def remettre_bien_les_ids():
-    cards = []
     i = 0
-    with open(Config.CARDS_DATA_PATH, 'r') as file:
-        data = json.load(file)
-        for card in data['cards']:
-            card['id'] = i
-            i += 1
+    for card in data['cards']:
+        card['id'] = i
+        i += 1
+
     with open(Config.CARDS_DATA_PATH, 'w') as file:
         json.dump(data, file, indent=4)
+
+
 
 
 

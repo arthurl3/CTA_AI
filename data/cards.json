@@ -2,291 +2,983 @@
     "cards": [
         {
             "id": 0,
+            "title": "Terrain Air 50",
+            "type": 1,
+            "element": 6,
+            "power": 50
+        },
+        {
+            "id": 1,
+            "title": "Air",
+            "type": 1,
+            "element": 6,
+            "power": 65
+        },
+        {
+            "id": 2,
+            "title": "Air",
+            "type": 1,
+            "element": 6,
+            "power": 80
+        },
+        {
+            "id": 3,
+            "title": "Air",
+            "type": 1,
+            "element": 6,
+            "power": 95
+        },
+        {
+            "id": 4,
+            "title": "Air",
+            "type": 1,
+            "element": 6,
+            "power": 110
+        },
+        {
+            "id": 5,
+            "title": "Terrain Air 120",
+            "type": 1,
+            "element": 6,
+            "power": 120
+        },
+        {
+            "id": 6,
+            "title": "Air",
+            "type": 1,
+            "element": 6,
+            "power": 130
+        },
+        {
+            "id": 7,
+            "title": "Terrain Air 140",
+            "type": 1,
+            "element": 6,
+            "power": 140
+        },
+        {
+            "id": 8,
             "title": "OSEF",
             "element": 6,
             "power": 450
         },
         {
-            "id": 1,
+            "id": 9,
+            "title": "OSEF",
+            "element": 6,
+            "power": 465
+        },
+        {
+            "id": 10,
             "title": "OSEF",
             "element": 6,
             "power": 490
         },
         {
-            "id": 2,
+            "id": 11,
             "title": "OSEF",
             "element": 6,
             "power": 505
         },
         {
-            "id": 3,
+            "id": 12,
+            "title": "Air",
+            "element": 6,
+            "power": 535
+        },
+        {
+            "id": 13,
+            "title": "Air",
+            "element": 6,
+            "power": 550
+        },
+        {
+            "id": 14,
+            "title": "Air",
+            "element": 6,
+            "power": 580
+        },
+        {
+            "id": 15,
+            "title": "Air",
+            "element": 6,
+            "power": 600
+        },
+        {
+            "id": 16,
+            "title": "Air",
+            "element": 6,
+            "power": 650
+        },
+        {
+            "id": 17,
             "title": "OSEF",
             "element": 6,
             "power": 680
         },
         {
-            "id": 4,
-            "title": "OSEF",
+            "id": 18,
+            "title": "Air",
             "element": 6,
-            "power": 465
+            "power": 685
         },
         {
-            "id": 5,
+            "id": 19,
+            "title": "Air",
+            "element": 6,
+            "power": 690
+        },
+        {
+            "id": 20,
+            "title": "Air",
+            "element": 6,
+            "power": 700
+        },
+        {
+            "id": 21,
+            "title": "Air",
+            "element": 6,
+            "power": 710
+        },
+        {
+            "id": 22,
+            "title": "Air",
+            "element": 6,
+            "power": 715
+        },
+        {
+            "id": 23,
             "title": "OSEF",
             "element": 6,
             "power": 720
         },
         {
-            "id": 6,
+            "id": 24,
             "title": "OSEF",
             "element": 6,
             "power": 735
         },
         {
-            "id": 7,
-            "title": "OSEF",
+            "id": 25,
+            "title": "Terrain Lumi\u00c3\u00a8re 50",
+            "type": 1,
+            "element": 5,
+            "power": 50
+        },
+        {
+            "id": 26,
+            "title": "Lumi\u00c3\u00a8re",
+            "type": 1,
+            "element": 5,
+            "power": 65
+        },
+        {
+            "id": 27,
+            "title": "Lumi\u00c3\u00a8re",
+            "type": 1,
+            "element": 5,
+            "power": 80
+        },
+        {
+            "id": 28,
+            "title": "Lumi\u00c3\u00a8re",
+            "type": 1,
+            "element": 5,
+            "power": 95
+        },
+        {
+            "id": 29,
+            "title": "Lumi\u00c3\u00a8re",
+            "type": 1,
+            "element": 5,
+            "power": 110
+        },
+        {
+            "id": 30,
+            "title": "Terrain Lumi\u00c3\u00a8re 120",
+            "type": 1,
+            "element": 5,
+            "power": 120
+        },
+        {
+            "id": 31,
+            "title": "Lumi\u00c3\u00a8re",
+            "type": 1,
+            "element": 5,
+            "power": 130
+        },
+        {
+            "id": 32,
+            "title": "Terrain Lumi\u00c3\u00a8re 140",
+            "type": 1,
+            "element": 5,
+            "power": 140
+        },
+        {
+            "id": 33,
+            "title": "Lumiere",
             "element": 5,
             "power": 460
         },
         {
-            "id": 8,
-            "title": "OSEF",
-            "element": 5,
-            "power": 480
-        },
-        {
-            "id": 9,
-            "title": "OSEF",
+            "id": 34,
+            "title": "Lumiere",
             "element": 5,
             "power": 470
         },
         {
-            "id": 10,
-            "title": "OSEF",
+            "id": 35,
+            "title": "Lumiere",
             "element": 5,
             "power": 480
         },
         {
-            "id": 11,
-            "title": "OSEF",
+            "id": 36,
+            "title": "Lumiere",
             "element": 5,
             "power": 500
         },
         {
-            "id": 12,
-            "title": "OSEF",
+            "id": 37,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 535
+        },
+        {
+            "id": 38,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 550
+        },
+        {
+            "id": 39,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 580
+        },
+        {
+            "id": 40,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 600
+        },
+        {
+            "id": 41,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 650
+        },
+        {
+            "id": 42,
+            "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 680
         },
         {
-            "id": 13,
-            "title": "OSEF",
+            "id": 43,
+            "title": "Lumi\u00c3\u00a8re",
             "element": 5,
-            "power": 725
+            "power": 685
         },
         {
-            "id": 14,
-            "title": "OSEF",
+            "id": 44,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 690
+        },
+        {
+            "id": 45,
+            "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 700
         },
         {
-            "id": 15,
+            "id": 46,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 710
+        },
+        {
+            "id": 47,
+            "title": "Lumi\u00c3\u00a8re",
+            "element": 5,
+            "power": 715
+        },
+        {
+            "id": 48,
+            "title": "Lumiere",
+            "element": 5,
+            "power": 725
+        },
+        {
+            "id": 49,
             "title": "OSEF",
+            "element": 5,
+            "power": 745
+        },
+        {
+            "id": 50,
+            "title": "Terrain Feu 50",
+            "type": 1,
+            "element": 4,
+            "power": 50
+        },
+        {
+            "id": 51,
+            "title": "Feu",
+            "type": 1,
+            "element": 4,
+            "power": 65
+        },
+        {
+            "id": 52,
+            "title": "Feu",
+            "type": 1,
+            "element": 4,
+            "power": 80
+        },
+        {
+            "id": 53,
+            "title": "Feu",
+            "type": 1,
+            "element": 4,
+            "power": 95
+        },
+        {
+            "id": 54,
+            "title": "Feu",
+            "type": 1,
+            "element": 4,
+            "power": 110
+        },
+        {
+            "id": 55,
+            "title": "Terrain Feu 120",
+            "type": 1,
+            "element": 4,
+            "power": 120
+        },
+        {
+            "id": 56,
+            "title": "Feu",
+            "type": 1,
+            "element": 4,
+            "power": 130
+        },
+        {
+            "id": 57,
+            "title": "Terrain Feu 140",
+            "type": 1,
+            "element": 4,
+            "power": 140
+        },
+        {
+            "id": 58,
+            "title": "Feu",
             "element": 4,
             "power": 455
         },
         {
-            "id": 16,
-            "title": "OSEF",
+            "id": 59,
+            "title": "Feu",
             "element": 4,
-            "power": 680
+            "power": 480
         },
         {
-            "id": 17,
-            "title": "OSEF",
+            "id": 60,
+            "title": "Feu",
             "element": 4,
             "power": 495
         },
         {
-            "id": 18,
+            "id": 61,
+            "title": "Feu",
+            "element": 4,
+            "power": 535
+        },
+        {
+            "id": 62,
+            "title": "Feu",
+            "element": 4,
+            "power": 550
+        },
+        {
+            "id": 63,
+            "title": "Feu",
+            "element": 4,
+            "power": 580
+        },
+        {
+            "id": 64,
+            "title": "Feu",
+            "element": 4,
+            "power": 600
+        },
+        {
+            "id": 65,
+            "title": "Feu",
+            "element": 4,
+            "power": 650
+        },
+        {
+            "id": 66,
+            "title": "Feu",
+            "element": 4,
+            "power": 680
+        },
+        {
+            "id": 67,
+            "title": "Feu",
+            "element": 4,
+            "power": 685
+        },
+        {
+            "id": 68,
+            "title": "Feu",
+            "element": 4,
+            "power": 690
+        },
+        {
+            "id": 69,
             "title": "OSEF",
             "element": 4,
             "power": 705
         },
         {
-            "id": 19,
-            "title": "OSEF",
+            "id": 70,
+            "title": "Feu",
+            "element": 4,
+            "power": 715
+        },
+        {
+            "id": 71,
+            "title": "Feu",
             "element": 4,
             "power": 720
         },
         {
-            "id": 20,
-            "title": "OSEF",
-            "element": 4,
-            "power": 690
+            "id": 72,
+            "title": "Terrain Eau 50",
+            "type": 1,
+            "element": 3,
+            "power": 50
         },
         {
-            "id": 21,
-            "title": "OSEF",
+            "id": 73,
+            "title": "Eau",
+            "type": 1,
+            "element": 3,
+            "power": 65
+        },
+        {
+            "id": 74,
+            "title": "Eau",
+            "type": 1,
+            "element": 3,
+            "power": 80
+        },
+        {
+            "id": 75,
+            "title": "Eau",
+            "type": 1,
+            "element": 3,
+            "power": 95
+        },
+        {
+            "id": 76,
+            "title": "Eau",
+            "type": 1,
+            "element": 3,
+            "power": 110
+        },
+        {
+            "id": 77,
+            "title": "Terrain Eau 120",
+            "type": 1,
+            "element": 3,
+            "power": 120
+        },
+        {
+            "id": 78,
+            "title": "Eau",
+            "type": 1,
+            "element": 3,
+            "power": 130
+        },
+        {
+            "id": 79,
+            "title": "Terrain Eau 140",
+            "type": 1,
+            "element": 3,
+            "power": 140
+        },
+        {
+            "id": 80,
+            "title": "Eau",
             "element": 3,
             "power": 450
         },
         {
-            "id": 22,
-            "title": "OSEF",
+            "id": 81,
+            "title": "Eau",
             "element": 3,
             "power": 460
         },
         {
-            "id": 23,
-            "title": "OSEF",
+            "id": 82,
+            "title": "Eau",
             "element": 3,
             "power": 475
         },
         {
-            "id": 24,
-            "title": "OSEF",
+            "id": 83,
+            "title": "Eau",
             "element": 3,
             "power": 495
         },
         {
-            "id": 25,
-            "title": "OSEF",
+            "id": 84,
+            "title": "Eau",
+            "element": 3,
+            "power": 535
+        },
+        {
+            "id": 85,
+            "title": "Eau",
+            "element": 3,
+            "power": 550
+        },
+        {
+            "id": 86,
+            "title": "Eau",
+            "element": 3,
+            "power": 580
+        },
+        {
+            "id": 87,
+            "title": "Eau",
+            "element": 3,
+            "power": 600
+        },
+        {
+            "id": 88,
+            "title": "Eau",
+            "element": 3,
+            "power": 650
+        },
+        {
+            "id": 89,
+            "title": "Eau",
             "element": 3,
             "power": 680
         },
         {
-            "id": 26,
-            "title": "OSEF",
+            "id": 90,
+            "title": "Eau",
+            "element": 3,
+            "power": 695
+        },
+        {
+            "id": 91,
+            "title": "Eau",
             "element": 3,
             "power": 710
         },
         {
-            "id": 27,
-            "title": "OSEF",
+            "id": 92,
+            "title": "Eau",
             "element": 3,
-            "power": 720
+            "power": 715
         },
         {
-            "id": 28,
-            "title": "OSEF",
+            "id": 93,
+            "title": "Eau",
             "element": 3,
-            "power": 695
+            "power": 725
         },
         {
-            "id": 29,
-            "title": "OSEF",
+            "id": 94,
+            "title": "Terrain Tenebre 50",
+            "type": 1,
+            "element": 2,
+            "power": 50
+        },
+        {
+            "id": 95,
+            "title": "Tenebre",
+            "type": 1,
+            "element": 2,
+            "power": 65
+        },
+        {
+            "id": 96,
+            "title": "Tenebre",
+            "type": 1,
+            "element": 2,
+            "power": 80
+        },
+        {
+            "id": 97,
+            "title": "Tenebre",
+            "type": 1,
+            "element": 2,
+            "power": 95
+        },
+        {
+            "id": 98,
+            "title": "Tenebre",
+            "type": 1,
+            "element": 2,
+            "power": 110
+        },
+        {
+            "id": 99,
+            "title": "Terrain Tenebre 120",
+            "type": 1,
+            "element": 2,
+            "power": 120
+        },
+        {
+            "id": 100,
+            "title": "Tenebre",
+            "type": 1,
+            "element": 2,
+            "power": 130
+        },
+        {
+            "id": 101,
+            "title": "Terrain Tenebre 140",
+            "type": 1,
+            "element": 2,
+            "power": 140
+        },
+        {
+            "id": 102,
+            "title": "Tenebre",
             "element": 2,
             "power": 455
         },
         {
-            "id": 30,
-            "title": "OSEF",
+            "id": 103,
+            "title": "Tenebre",
             "element": 2,
             "power": 470
         },
         {
-            "id": 31,
-            "title": "OSEF",
+            "id": 104,
+            "title": "Tenebre",
             "element": 2,
             "power": 535
         },
         {
-            "id": 32,
-            "title": "OSEF",
+            "id": 105,
+            "title": "Tenebre",
             "element": 2,
-            "power": 680
+            "power": 535
         },
         {
-            "id": 33,
-            "title": "OSEF",
+            "id": 106,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 550
+        },
+        {
+            "id": 107,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 580
+        },
+        {
+            "id": 108,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 600
+        },
+        {
+            "id": 109,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 650
+        },
+        {
+            "id": 110,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 685
+        },
+        {
+            "id": 111,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 690
+        },
+        {
+            "id": 112,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 700
+        },
+        {
+            "id": 113,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 710
+        },
+        {
+            "id": 114,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 715
+        },
+        {
+            "id": 115,
+            "title": "Tenebre",
             "element": 2,
             "power": 725
         },
         {
-            "id": 34,
-            "title": "OSEF",
+            "id": 116,
+            "title": "Tenebre",
             "element": 2,
             "power": 740
         },
         {
-            "id": 35,
-            "title": "OSEF",
+            "id": 117,
+            "title": "Terrain Terre 50",
+            "type": 1,
+            "element": 1,
+            "power": 50
+        },
+        {
+            "id": 118,
+            "title": "Terre",
+            "type": 1,
+            "element": 1,
+            "power": 65
+        },
+        {
+            "id": 119,
+            "title": "Terre",
+            "type": 1,
+            "element": 1,
+            "power": 80
+        },
+        {
+            "id": 120,
+            "title": "Terre",
+            "type": 1,
+            "element": 1,
+            "power": 95
+        },
+        {
+            "id": 121,
+            "title": "Terre",
+            "type": 1,
+            "element": 1,
+            "power": 110
+        },
+        {
+            "id": 122,
+            "title": "Terrain Terre 120",
+            "type": 1,
+            "element": 1,
+            "power": 120
+        },
+        {
+            "id": 123,
+            "title": "Terre",
+            "type": 1,
+            "element": 1,
+            "power": 130
+        },
+        {
+            "id": 124,
+            "title": "Terrain Terre 140",
+            "type": 1,
+            "element": 1,
+            "power": 140
+        },
+        {
+            "id": 125,
+            "title": "Terre",
             "element": 1,
             "power": 455
         },
         {
-            "id": 36,
-            "title": "OSEF",
+            "id": 126,
+            "title": "Terre",
             "element": 1,
             "power": 475
         },
         {
-            "id": 37,
-            "title": "OSEF",
-            "element": 1,
-            "power": 500
-        },
-        {
-            "id": 38,
-            "title": "OSEF",
+            "id": 127,
+            "title": "Terre",
             "element": 1,
             "power": 490
         },
         {
-            "id": 39,
-            "title": "OSEF",
+            "id": 128,
+            "title": "Terre",
+            "element": 1,
+            "power": 500
+        },
+        {
+            "id": 129,
+            "title": "Terre",
+            "element": 1,
+            "power": 550
+        },
+        {
+            "id": 130,
+            "title": "Terre",
+            "element": 1,
+            "power": 580
+        },
+        {
+            "id": 131,
+            "title": "Terre",
+            "element": 1,
+            "power": 600
+        },
+        {
+            "id": 132,
+            "title": "Terre",
+            "element": 1,
+            "power": 650
+        },
+        {
+            "id": 133,
+            "title": "Terre",
             "element": 1,
             "power": 680
         },
         {
-            "id": 40,
-            "title": "OSEF",
+            "id": 134,
+            "title": "Terre",
+            "element": 1,
+            "power": 685
+        },
+        {
+            "id": 135,
+            "title": "Terre",
+            "element": 1,
+            "power": 700
+        },
+        {
+            "id": 136,
+            "title": "Terre",
+            "element": 1,
+            "power": 715
+        },
+        {
+            "id": 137,
+            "title": "Terre",
             "element": 1,
             "power": 730
         },
         {
-            "id": 41,
-            "title": "OSEF",
+            "id": 138,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 50
+        },
+        {
+            "id": 139,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 65
+        },
+        {
+            "id": 140,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 80
+        },
+        {
+            "id": 141,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 95
+        },
+        {
+            "id": 142,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 110
+        },
+        {
+            "id": 143,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 120
+        },
+        {
+            "id": 144,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 130
+        },
+        {
+            "id": 145,
+            "title": "Nature",
+            "type": 1,
+            "element": 0,
+            "power": 140
+        },
+        {
+            "id": 146,
+            "title": "Nature",
             "element": 0,
             "power": 465
         },
         {
-            "id": 42,
-            "title": "OSEF",
+            "id": 147,
+            "title": "Nature",
             "element": 0,
             "power": 485
         },
         {
-            "id": 43,
-            "title": "OSEF",
+            "id": 148,
+            "title": "Nature",
             "element": 0,
             "power": 520
         },
         {
-            "id": 44,
-            "title": "OSEF",
+            "id": 149,
+            "title": "Nature",
             "element": 0,
             "power": 680
         },
         {
-            "id": 45,
+            "id": 150,
+            "title": "Nature",
+            "element": 0,
+            "power": 685
+        },
+        {
+            "id": 151,
+            "title": "OSEF",
+            "element": 0,
+            "power": 695
+        },
+        {
+            "id": 152,
             "title": "OSEF",
             "element": 0,
             "power": 720
         },
         {
-            "id": 46,
+            "id": 153,
             "title": "OSEF",
             "element": 0,
             "power": 735
-        },
-        {
-            "id": 47,
-            "title": "OSEF",
-            "element": 0,
-            "power": 695
         }
     ]
 }

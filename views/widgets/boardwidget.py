@@ -16,12 +16,11 @@ class BoardWidget(customtkinter.CTkFrame):
 
         p, x, y = 0, 0, 0
         for card in viewmodel.board:
-            cw = CardWidget(self, card)
+            cw = CardWidget(self, card, owner=True)
             self.cardwidgets.append(cw)
             cw.grid(row=y, column=x, padx=10, pady=(5, 5), sticky="n")
             cw.configure(height=100, width=70)
             cw.configure(command=lambda pos=p: self.play_card(pos))
-            cw.disable()
 
             x += 1
             p += 1
@@ -30,15 +29,13 @@ class BoardWidget(customtkinter.CTkFrame):
                 y += 1
 
     def play_card(self, pos):
-        if not self.cardwidgets[pos].is_activate:
-            self.cardwidgets[pos].activate()
-            self.viewmodel.play_card(pos)
-            self.parent.update()
+        self.viewmodel.play_card(pos)
 
 
     def update(self):
         for pos in range(16):
             self.cardwidgets[pos].card = self.viewmodel.board[pos]
-            self.cardwidgets[pos].update()
+            if self.cardwidgets[pos].card:
+                self.cardwidgets[pos].update()
 
 

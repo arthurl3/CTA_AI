@@ -37,6 +37,6 @@ class MatchSettingsViewModel:
     def validate(self):
         # Some verifications before validating settings
         if self.settings.deck_host and self.settings.deck_guest:
-            self.settings.starting_player = self.starting_player.get()
+            self.settings.host_is_p1 = self.starting_player.get()
             print(self.settings)
             Config.app.toggle_frame_by_id(Config.FRAMEID_GAME)

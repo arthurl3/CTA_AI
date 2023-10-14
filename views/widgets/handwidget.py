@@ -26,9 +26,10 @@ class HandWidget(customtkinter.CTkFrame):
     def update(self):
         hand = self.viewmodel.get_hand()
         for i in range(6):
-            self.cardwidgets[i].card = hand[i]
-            self.cardwidgets[i].configure(command=lambda c=hand[i]: self.onclick(c))
-            self.cardwidgets[i].update()
+            if hand[i]:
+                self.cardwidgets[i].card = hand[i]
+                self.cardwidgets[i].configure(command=lambda c=hand[i]: self.onclick(c))
+                self.cardwidgets[i].update()
 
 
     def onclick(self, c):
