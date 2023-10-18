@@ -65,7 +65,7 @@ def load_deck(deck_index):
                 deck_cards.append(copy.deepcopy(c))
 
     deck_cards[0].leader = True
-    return deck_cards
+    return (deck_cards, deck['special_ability'])
 
 # Insère un deck mais il faut encore insérer le nom à la main (sinon le nom est donné par défaut)
 def insert_deck(cards, deck_name, special_ability):

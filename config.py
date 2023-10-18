@@ -11,7 +11,14 @@ class Config:
     FIELD_PATH = BASE_DIR + r"\resources\field-1.png"
     TRASH_PATH = BASE_DIR + r"\resources\trash-1.png"
 
-    SPECIAL_POWERS = ["INVERSION D'AVANTAGE",  "ACCUMULATION DE PUISSANCE", "BANNIERE DE COMMANDEMENT", "INFLUENCE DE TERRAIN", "RENFORCEMENT AFFINITÉS"]
+    SPECIAL_POWERS = ["INVERSION D'AVANTAGE",  "ACCUMULATION DE PUISSANCE", "BANNIERE DE COMMANDEMENT", "INFLUENCE DE TERRAIN", "RENFORCEMENT AFFINITÉS", "MIROIR DE PUISSANCE"]
+    SPECIAL_POWERS_DICT = {'inversion': 0,
+                           'accumulation': 1,
+                           'banniere': 2,
+                           'field': 3,
+                           'renforcement': 4,
+                           'miroir': 5
+                           }
 
     #Stockage par tableau des couleurs des éléments (Rappel : 0 = Nature, ..., 6 = Air)
     ARKHOME_COLORS = ["#29B621", "#E5A360", "#A569BD", "#359EFE", "#E74C3C", "#FEFD9B", "#A8FFFE"]
@@ -21,8 +28,8 @@ class Config:
     CARD_TYPES = ["CHARACTER", "FIELD", "EQUIPMENT"]
 
 
-    WINDOW_WIDTH = 1100
-    WINDOW_HEIGHT = 800
+    WINDOW_WIDTH = 1200
+    WINDOW_HEIGHT = 1000
 
     FRAMEID_DECKBUILDER = "frame1"
     FRAMEID_SETTINGS = "frame2"

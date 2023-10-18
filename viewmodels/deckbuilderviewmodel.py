@@ -1,4 +1,5 @@
 import loader
+from config import Config
 from models.card import Card
 from views.widgets.cardwidget import CardWidget
 
@@ -22,9 +23,9 @@ class DeckBuilderViewModel:
             counter = card.initial_power
 
             if card.field:
-                counter += 250
+                counter += 300
 
-            if self.points_counter + counter < 15000:
+            if self.points_counter + counter <= 15000:
                 self.points_counter += counter
                 self.selected_cards.append(card)
                 self.view.update()
@@ -36,6 +37,9 @@ class DeckBuilderViewModel:
         if cardview.card:
             self.selected_cards.remove(cardview.card)
             self.points_counter -= cardview.card.initial_power
+
+            if cardview.card.field:
+                self.points_counter -= 300
             self.view.update()
 
 
@@ -47,7 +51,7 @@ class DeckBuilderViewModel:
             for card in self.selected_cards:
                 deck_cards.append(card.id)
 
-            loader.insert_deck(deck_cards, deck_name, self.special_ability)
+            loader.insert_deck(deck_cards, deck_name, Config.SPECIAL_POWERS.index(self.special_ability))
             self.selected_cards = []
             self.points_counter = 0
             self.view.reset()

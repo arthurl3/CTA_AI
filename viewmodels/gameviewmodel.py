@@ -1,8 +1,7 @@
 from random import shuffle
 import loader
-from models.card import Card
 from logic.boardgraph import BoardGraph
-
+from logic import ai as ai
 
 class GameViewModel:
     def __init__(self, settings, view):
@@ -29,8 +28,8 @@ class GameViewModel:
         self.deck_guest = []
 
         #### DECK LOADING ###
-        tmp_deck_host = loader.load_deck(settings.deck_host)
-        tmp_deck_guest = loader.load_deck(settings.deck_guest)
+        (tmp_deck_host, sa1) = loader.load_deck(settings.deck_host)
+        (tmp_deck_guest, sa2) = loader.load_deck(settings.deck_guest)
 
         c_tmp1 = tmp_deck_host[0]
         c_tmp2 = tmp_deck_guest[0]
@@ -45,13 +44,16 @@ class GameViewModel:
         self.deck_guest.extend(tmp_deck_guest[:])
 
         if self.settings.host_is_p1:
+            self.board_graph.set_special_abilities(sa1, sa2)
             for card in self.deck_guest:
                 card.owned_by_p1 = False
         else:
+            self.board_graph.set_special_abilities(sa2, sa1)
             for card in self.deck_host:
                 card.owned_by_p1 = False
 
         ###
+
 
         ### GESTION DU MODE ASSISTANT ###
         if self.settings.mode == 1:
@@ -61,8 +63,7 @@ class GameViewModel:
             tmp_deck_host.extend(self.deck_host[1:])
             self.deck_host = tmp_deck_host
 
-            for card in self.deck_host:
-                print(card)
+
 
     # When a player click on a card in his hand
     def set_selected(self, card):
@@ -77,41 +78,37 @@ class GameViewModel:
             return
         if self.board[position]:
             return
-
         if card:
             self.selected_card = card
-
         if not self.selected_card:
             return
 
         # Verification du tour de host si c'est lui qui clique
-        if not self.settings.host_is_p1 == self.current_player and not card:
-            return
+        # if not self.settings.host_is_p1 == self.current_player and not card:
+        #     return
 
         self.board_graph.play_card(self.selected_card, position)
 
-        if self.settings.host_is_p1:
-            self.score_host = self.board_graph.score_p1
-            self.score_guest = self.board_graph.score_p2
-        else:
-            self.score_host = self.board_graph.score_p2
-            self.score_guest = self.board_graph.score_p1
+        if not self.selected_card.field:
+            if self.settings.host_is_p1:
+                self.score_host = self.board_graph.model.score_p1
+                self.score_guest = self.board_graph.model.score_p2
+            else:
+                self.score_host = self.board_graph.model.score_p2
+                self.score_guest = self.board_graph.model.score_p1
+
+            self.draw()
+            self.turn_counter += 1
+            self.current_player = not self.current_player
 
         self.board = self.board_graph.to_board_array()
-        self.draw()
         self.view.update()
-        self.current_player = not self.current_player
-        self.turn_counter += 1
+
+
 
     def ai_play(self):
-        # Random pour l'instant on joue au premier indice disponible
-        for i in range(16):
-            if not self.board[i]:
-                if self.current_player:
-                    self.play_card(i, card=self.deck_host[0])
-                else:
-                    self.play_card(i, card=self.deck_guest[0])
-                break
+        (card, position) = ai.start_ai(self.board_graph.model, self.deck_host[:6], self.deck_guest[:6])
+        self.play_card(position, card)
 
     def draw(self):
         if self.current_player:
@@ -159,6 +156,6 @@ class GameViewModel:
                         counter += 1
 
     def change_card_to_add(self, card_txt: str):
-        id = card_txt.split()[0]
-        self.card_to_add = loader.load_card_from_id(id)
+        a_id = card_txt.split()[0]
+        self.card_to_add = loader.load_card_from_id(a_id)
         self.card_to_add.owned_by_p1 = True

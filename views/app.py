@@ -74,6 +74,8 @@ class App(customtkinter.CTk):
             App.frames[frame_id] = MatchSettingsView(master=self)
         elif frame_id == Config.FRAMEID_GAME:
             App.frames[frame_id] = GameView(master=self)
+            App.frames[frame_id].game_viewmodel.ai_play()
+
 
     # method to change views
     def toggle_frame_by_id(self, frame_id):

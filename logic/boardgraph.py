@@ -1,5 +1,4 @@
-import networkx as nx
-
+from logic.boardmodel import BoardModel
 from models.card import Card
 
 '''
@@ -14,219 +13,202 @@ Exemple:  carte = {'element': 0, 'initial_pow': 450, 'current_pow': 550, 'owned_
 '''
 
 
-class BoardGraph(nx.Graph):
+class BoardGraph:
     def __init__(self, **attr):
         super().__init__(**attr)
+        self.model = BoardModel()
 
-        ### Data in cache
-        self.nodes_cache = []
-        self.current_player = True  # True p1 false p2
-        self.score_p1 = 0
-        self.score_p2 = 0
-        ###
+    # i_node is the node index where the card is played
+    def play_card(self, card, i_node):
+        if card.field:
+            self.model.field_play = True
+            self.model.field_turn_left = 3
+            self.model.field_power = card.initial_power
+            self.model.field_element = card.element
 
-        for i in range(16):
-            card = {'element': -1, 'initial_pow': -1, 'current_pow': -1, 'owned_by_p1': True}
-            self.add_node(i, data=card)
+            # Calcule des nouvelles forces
+            for i_n in self.model.nodes:
+                self.update_power(i_n)
 
-        # Define a grid graph
-        self.add_edge(0, 1)
-        self.add_edge(0, 4)
-        self.add_edge(1, 2)
-        self.add_edge(1, 5)
-        self.add_edge(2, 3)
-        self.add_edge(2, 6)
-        self.add_edge(3, 7)
-        self.add_edge(4, 5)
-        self.add_edge(4, 8)
-        self.add_edge(5, 6)
-        self.add_edge(5, 9)
-        self.add_edge(6, 7)
-        self.add_edge(6, 10)
-        self.add_edge(7, 11)
-        self.add_edge(8, 9)
-        self.add_edge(8, 12)
-        self.add_edge(9, 10)
-        self.add_edge(9, 13)
-        self.add_edge(10, 11)
-        self.add_edge(10, 14)
-        self.add_edge(11, 15)
-        self.add_edge(12, 13)
-        self.add_edge(13, 14)
-        self.add_edge(14, 15)
+        else:
+            if card.leader:
+                self.enable_leader()
 
-        self.reset_marqued_node()
+            ### On convertit la carte en data node
+            node = self.get_node_data_from_card(card)
+            self.model.add_node(i_node, data=node)
+            self.model.add_edges(i_node)
 
-    def play_card(self, card, pos):
+            self.model.pos_flag = False
+            # Calcule des affinités et des trinités
+            self.update_power(i_node)
+            self.model.pos_flag = True
 
-        ### On convertie la carte en data node
-        self.nodes[pos]['data'] = self.get_node_data_from_card(card)
+            # Calcule des reprises
+            if self.current_player_control_leader():
+                self.calculate_taken_ennemies(i_node, chain=2)
+            else:
+                self.calculate_taken_ennemies(i_node, chain=1)
 
-        # Récupérer les alliés et ennemies
-        allies, ennemies = self.get_allies_and_ennemies(pos)
+                # Calcule des nouvelles forces
+                for i_n in self.model.nodes:
+                    self.update_power(i_n)
 
-        # Calcule des affinités et des trinités
-        card.current_power = card.initial_power + self.get_power_boost_with_affinities_and_trinities(card, allies)
+                    # Si le leader est de nouveau controlé par le joueur actuel après reprise
+                    if self.model.nodes[i_n]['data']['leader']:
+                        if self.model.nodes[i_n]['data']['original_owner'] == self.model.current_player:
+                            self.enable_leader()
 
-        # Calcule des reprises
-        self.calculate_taken_ennemies(card, ennemies)
+            if self.model.field_turn_left > 0:
+                self.model.field_turn_left -= 1
 
-        # Calcule des nouvelles forces
-        for i_node in range(16):
-            if self.exists(i_node):
-                self.update_power(i_node)
+            self.model.current_player = not self.model.current_player
+        self.model.field_play = False
 
-        self.current_player = not self.current_player
-
-
-    def exists(self, i_node):
-        node = self.nodes[i_node]['data']
-        if node['element'] != -1:
-            return True
-        return False
-
+    def set_special_abilities(self, sa_p1, sa_p2):
+        self.model.special_ability_p1 = sa_p1
+        self.model.special_ability_p2 = sa_p2
 
     def update_power(self, i_node):
-        card = self.get_card_from_node(i_node)
-        # Récupérer les alliés et ennemies
-        allies, ennemies = self.get_allies_and_ennemies(i_node)
-
-        node = self.nodes[i_node]['data']
+        node = self.model.nodes[i_node]['data']
         # Calcule des affinités et des trinités
-        node['current_pow'] = node['initial_pow'] + self.get_power_boost_with_affinities_and_trinities(card, allies)
+        node['current_pow'] = node['initial_pow'] + self.get_power_boost_with_affinities_and_trinities(i_node)
 
-    def calculate_taken_ennemies(self, card, ennemies):
+        if self.model.field_turn_left > 0 and self.model.field_element == node['element']:
+            node['current_pow'] += self.model.field_power
+
+    def calculate_taken_ennemies(self, pos, chain):
+        node = self.model.nodes[pos]['data']
+        _, ennemies = self.get_allies_and_ennemies(pos)
+
         ### On calcule maintenant les prises
         for i_ennemy in ennemies:
-            ennemy = self.nodes[i_ennemy]['data']
-            element_gain = self.get_force(card.element, ennemy['element'])
-            if card.current_power + element_gain > ennemy['current_pow']:
-                ennemy['owned_by_p1'] = self.current_player
-                if self.current_player:
-                    self.score_p1 += 2
-                else:
-                    self.score_p2 += 2
+            ennemy = self.model.nodes[i_ennemy]['data']
+            element_gain = self.get_force(node['element'], ennemy['element'])
+            if node['current_pow'] + element_gain > ennemy['current_pow']:
+                ennemy['owned_by_p1'] = self.model.current_player
+                self.increase_score(2)
 
-                # On calcule la chaine x1 dans le cas d'une prise
-                for i_e in self.neighbors(i_ennemy):
-                    e = self.nodes[i_e]['data']
-                    element_gain = self.get_force(ennemy['element'], e['element'])
-                    if ennemy['current_pow'] + element_gain > e['current_pow']:
-                        e['owned_by_p1'] = self.current_player
-                        if self.current_player:
-                            self.score_p1 += 2
-                        else:
-                            self.score_p2 += 2
+                # On enlève le flag de possession du leader s'il est capturé
+                if ennemy['leader'] and ennemy['original_owner'] == (not self.model.current_player):
+                    self.disable_leader()
 
-    def get_power_boost_with_affinities_and_trinities(self, card, allies):
+                # Récursif si chaine > 0
+                if chain > 0:
+                    self.calculate_taken_ennemies(i_ennemy, chain=chain - 1)
+
+    def increase_score(self, points):
+        if self.model.current_player:
+            self.model.score_p1 += points
+        else:
+            self.model.score_p2 += points
+
+    def enable_leader(self):
+        if self.model.current_player:
+            self.model.p1_control_leader = True
+        else:
+            self.model.p2_control_leader = True
+
+    # Met à False la possession du leader par le joueur non actif
+    def disable_leader(self):
+        if self.model.current_player:
+            self.model.p2_control_leader = False
+        else:
+            self.model.p1_control_leader = False
+
+    def current_player_control_leader(self):
+        if self.model.current_player:
+            return self.model.p1_control_leader
+        else:
+            return self.model.p2_control_leader
+
+
+    # Method to light the get_power_boost_with_affinities_and_trinities method (verify direct neighbors)
+    def verify_proximity(self, node, allies, trinities, possible_trinity_distances, trinity_distances):
+        for i_ally_of_ally in allies:
+            ally_of_ally = self.model.nodes[i_ally_of_ally]['data']
+            d = self.get_element_distance(node['element'], ally_of_ally['element'])
+            for i in range(len(possible_trinity_distances)):
+                if d == possible_trinity_distances[i]:
+                    trinities.add(trinity_distances[i])
+
+    # 2nd Method to light the get_power_boost_with_affinities_and_trinities
+    def verify_neighborhood(self, i_node, node, trinities, possible_trinity_distances, trinity_distances):
+        # Voisins éloignés
+        allies, _ = self.get_allies_and_ennemies(i_node)
+        for i_neighbor in allies:
+            neighbor = self.model.nodes[i_neighbor]['data']
+            d = self.get_element_distance(node['element'], neighbor['element'])
+            for i in range(len(possible_trinity_distances)):
+                if d == possible_trinity_distances[i]:
+                    trinities.add(trinity_distances[i])
+
+    def get_power_boost_with_affinities_and_trinities(self, i_node):
+        allies, _ = self.get_allies_and_ennemies(i_node)
+        node = self.model.nodes[i_node]['data']
         # Verifier trinités et affinités proches (ensembles car ne peut contenir qu'une seule fois une trinité ou une affi)
         affinities = set()
         trinities = set()
         i = 0
 
         for i_ally in allies:
-            ally = self.nodes[i_ally]['data']
-            element_distance = self.get_element_distance(card.element, ally['element'])
+            ally = self.model.nodes[i_ally]['data']
+            element_distance = self.get_element_distance(node['element'], ally['element'])
             # S'il y a encore un node à comparer avec l'actuel
             match element_distance:
                 case 0:
                     pass
                 case 1:
-                    if len(allies) > i + 2:
-                        for i_ally_of_ally in allies[i + 1:]:
-                            ally_of_ally = self.nodes[i_ally_of_ally]['data']
-                            d = self.get_element_distance(card.element, ally_of_ally['element'])
-                            if d == 2:
-                                trinities.add(1)
-                            elif d == 6:
-                                trinities.add(0)
-                    # Voisins éloignés
-                    for i_neighbor in self.neighbors(i_ally):
-                        neighbor = self.nodes[i_neighbor]['data']
-                        if neighbor['element'] != -1 and neighbor['owned_by_p1'] == self.current_player:
-                            d = self.get_element_distance(card.element, neighbor['element'])
-                            if d == 2:
-                                trinities.add(1)
-                            elif d == 6:
-                                trinities.add(0)
+                    if len(allies) > i + 1:
+                        self.verify_proximity(node, allies[i + 1:], trinities, [2, 6], [1, 0])
+                    self.verify_neighborhood(i_ally, node,  trinities, [2, 6], [1, 0])
 
                 case 2:
                     affinities.add(1)
+                    if len(allies) > i + 1:
+                        self.verify_proximity(node, allies[i + 1:], trinities, [1], [1])
+                    self.verify_neighborhood(i_ally, node, trinities, [1], [1])
 
-                    if len(allies) > i + 2:
-                        for i_ally_of_ally in allies[i + 1:]:
-                            ally_of_ally = self.nodes[i_ally_of_ally]['data']
-                            d = self.get_element_distance(card.element, ally_of_ally['element'])
-                            if d == 1:
-                                trinities.add(1)
-
-                    for i_neighbor in self.neighbors(i_ally):
-                        neighbor = self.nodes[i_neighbor]['data']
-                        if neighbor['element'] != -1 and neighbor['owned_by_p1'] == self.current_player:
-                            d = self.get_element_distance(card.element, neighbor['element'])
-                            if d == 1:
-                                trinities.add(1)
                 case 3:
                     pass
                 case 4:
                     pass
                 case 5:
                     affinities.add(-1)
-                    print(f"Mise à jour de la carte avec la p_init de {card.initial_power}")
-                    if len(allies) > i + 2:
-                        for i_ally_of_ally in allies[i + 1:]:
-                            ally_of_ally = self.nodes[i_ally_of_ally]['data']
-                            d = self.get_element_distance(card.element, ally_of_ally['element'])
-                            if d == 6:
-                                trinities.add(-1)
-
-                    for i_neighbor in self.neighbors(i_ally):
-                        neighbor = self.nodes[i_neighbor]['data']
-                        if neighbor['element'] != -1 and neighbor['owned_by_p1'] == self.current_player:
-                            d = self.get_element_distance(card.element, neighbor['element'])
-                            if d == 6:
-                                trinities.add(-1)
+                    if len(allies) > i + 1:
+                        self.verify_proximity(node, allies[i + 1:], trinities, [6], [-1])
+                    self.verify_neighborhood(i_ally, node, trinities, [6], [-1])
 
                 case 6:
-                    if len(allies) > i + 2:
-                        for i_ally_of_ally in allies[i + 1:]:
-                            ally_of_ally = self.nodes[i_ally_of_ally]['data']
-                            d = self.get_element_distance(card.element, ally_of_ally['element'])
-                            if d == 1:
-                                trinities.add(0)
-                            elif d == 5:
-                                trinities.add(-1)
-                    for i_neighbor in self.neighbors(i_ally):
-                        neighbor = self.nodes[i_neighbor]['data']
-                        if neighbor['element'] != -1 and neighbor['owned_by_p1'] == self.current_player:
-                            d = self.get_element_distance(card.element, neighbor['element'])
-                            if d == 1:
-                                trinities.add(0)
-                            elif d == 5:
-                                trinities.add(-1)
+                    if len(allies) > i + 1:
+                        self.verify_proximity(node, allies[i + 1:], trinities, [1, 5], [0, -1])
+                    self.verify_neighborhood(i_ally, node, trinities, [1, 5], [0, -1])
             i += 1
 
-        # Le boost de force = la longueur de l'intersection des ensembles trinities et affinities facteur 100
+        if len(trinities) > 0 and self.model.pos_flag and not self.model.field_play:
+            self.increase_score(1)
+
         return len(trinities | affinities) * 100
 
     def get_node_data_from_card(self, card):
         return {'element': card.element, 'initial_pow': card.initial_power,
                 'current_pow': card.current_power, 'owned_by_p1': card.owned_by_p1,
-                'leader': card.leader}
+                'leader': card.leader, 'original_owner': card.owned_by_p1}
 
     def get_card_from_node(self, i_node):
-        node = self.nodes[i_node]['data']
-        # S'il n'y a pas de carte, on append un No
-        if node['initial_pow'] == -1:
-            return None
+        node = None
+        if self.model.has_node(i_node):
+            node = self.model.nodes[i_node]['data']
         else:
-            return Card(0,
-                        node['element'],
-                        node['initial_pow'],
-                        current_power=node['current_pow'],
-                        owned_by_p1=node['owned_by_p1'],
-                        leader=node['leader']
-                        )
+            return None
+
+        return Card(0,
+                    element=node['element'],
+                    power=node['initial_pow'],
+                    current_power=node['current_pow'],
+                    owned_by_p1=node['owned_by_p1'],
+                    leader=node['leader']
+                    )
 
     def to_board_array(self):
         board = []
@@ -262,19 +244,23 @@ class BoardGraph(nx.Graph):
                 return -150
         return 0
 
-    def reset_marqued_node(self):
-        for i_node in self.nodes:
-            self.nodes[i_node]['marque'] = False
-
     def get_allies_and_ennemies(self, id_node):
-        node = self.nodes[id_node]['data']
+        node = self.model.nodes[id_node]['data']
         allies, ennemies = [], []
 
-        for i_node in self.neighbors(id_node):
-            neighbor = self.nodes[i_node]['data']
+        for i_node in self.model.neighbors(id_node):
+            neighbor = self.model.nodes[i_node]['data']
             if neighbor['element'] != -1:
                 if neighbor['owned_by_p1'] == node['owned_by_p1']:
                     allies.append(i_node)
                 else:
                     ennemies.append(i_node)
         return allies, ennemies
+
+    def get_empty_cells(self):
+        empty_cells = []
+        for i_node in range(16):
+            if not self.model.has_node(i_node):
+                empty_cells.append(i_node)
+        return empty_cells
+

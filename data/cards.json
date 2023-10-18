@@ -58,617 +58,617 @@
         },
         {
             "id": 8,
-            "title": "OSEF",
+            "title": "Air",
             "element": 6,
             "power": 450
         },
         {
             "id": 9,
-            "title": "OSEF",
+            "title": "Air",
             "element": 6,
             "power": 465
         },
         {
             "id": 10,
-            "title": "OSEF",
+            "title": "Air",
             "element": 6,
-            "power": 490
+            "power": 485
         },
         {
             "id": 11,
-            "title": "OSEF",
+            "title": "Air",
             "element": 6,
-            "power": 505
+            "power": 490
         },
         {
             "id": 12,
             "title": "Air",
             "element": 6,
-            "power": 535
+            "power": 505
         },
         {
             "id": 13,
             "title": "Air",
             "element": 6,
-            "power": 550
+            "power": 535
         },
         {
             "id": 14,
             "title": "Air",
             "element": 6,
-            "power": 580
+            "power": 550
         },
         {
             "id": 15,
             "title": "Air",
             "element": 6,
-            "power": 600
+            "power": 580
         },
         {
             "id": 16,
             "title": "Air",
             "element": 6,
-            "power": 650
+            "power": 600
         },
         {
             "id": 17,
+            "title": "Air",
+            "element": 6,
+            "power": 650
+        },
+        {
+            "id": 18,
             "title": "OSEF",
             "element": 6,
             "power": 680
         },
         {
-            "id": 18,
+            "id": 19,
             "title": "Air",
             "element": 6,
             "power": 685
         },
         {
-            "id": 19,
+            "id": 20,
             "title": "Air",
             "element": 6,
             "power": 690
         },
         {
-            "id": 20,
+            "id": 21,
             "title": "Air",
             "element": 6,
             "power": 700
         },
         {
-            "id": 21,
+            "id": 22,
             "title": "Air",
             "element": 6,
             "power": 710
         },
         {
-            "id": 22,
+            "id": 23,
             "title": "Air",
             "element": 6,
             "power": 715
         },
         {
-            "id": 23,
+            "id": 24,
             "title": "OSEF",
             "element": 6,
             "power": 720
         },
         {
-            "id": 24,
+            "id": 25,
             "title": "OSEF",
             "element": 6,
             "power": 735
         },
         {
-            "id": 25,
+            "id": 26,
             "title": "Terrain Lumi\u00c3\u00a8re 50",
             "type": 1,
             "element": 5,
             "power": 50
         },
         {
-            "id": 26,
-            "title": "Lumi\u00c3\u00a8re",
-            "type": 1,
-            "element": 5,
-            "power": 65
-        },
-        {
             "id": 27,
             "title": "Lumi\u00c3\u00a8re",
             "type": 1,
             "element": 5,
-            "power": 80
+            "power": 65
         },
         {
             "id": 28,
             "title": "Lumi\u00c3\u00a8re",
             "type": 1,
             "element": 5,
-            "power": 95
+            "power": 80
         },
         {
             "id": 29,
             "title": "Lumi\u00c3\u00a8re",
             "type": 1,
             "element": 5,
-            "power": 110
+            "power": 95
         },
         {
             "id": 30,
+            "title": "Lumi\u00c3\u00a8re",
+            "type": 1,
+            "element": 5,
+            "power": 110
+        },
+        {
+            "id": 31,
             "title": "Terrain Lumi\u00c3\u00a8re 120",
             "type": 1,
             "element": 5,
             "power": 120
         },
         {
-            "id": 31,
+            "id": 32,
             "title": "Lumi\u00c3\u00a8re",
             "type": 1,
             "element": 5,
             "power": 130
         },
         {
-            "id": 32,
+            "id": 33,
             "title": "Terrain Lumi\u00c3\u00a8re 140",
             "type": 1,
             "element": 5,
             "power": 140
         },
         {
-            "id": 33,
+            "id": 34,
             "title": "Lumiere",
             "element": 5,
             "power": 460
         },
         {
-            "id": 34,
+            "id": 35,
             "title": "Lumiere",
             "element": 5,
             "power": 470
         },
         {
-            "id": 35,
+            "id": 36,
             "title": "Lumiere",
             "element": 5,
             "power": 480
         },
         {
-            "id": 36,
+            "id": 37,
             "title": "Lumiere",
             "element": 5,
             "power": 500
         },
         {
-            "id": 37,
+            "id": 38,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 535
         },
         {
-            "id": 38,
+            "id": 39,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 550
         },
         {
-            "id": 39,
+            "id": 40,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 580
         },
         {
-            "id": 40,
+            "id": 41,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 600
         },
         {
-            "id": 41,
+            "id": 42,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 650
         },
         {
-            "id": 42,
+            "id": 43,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 680
         },
         {
-            "id": 43,
+            "id": 44,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 685
         },
         {
-            "id": 44,
+            "id": 45,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 690
         },
         {
-            "id": 45,
+            "id": 46,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 700
         },
         {
-            "id": 46,
+            "id": 47,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 710
         },
         {
-            "id": 47,
+            "id": 48,
             "title": "Lumi\u00c3\u00a8re",
             "element": 5,
             "power": 715
         },
         {
-            "id": 48,
+            "id": 49,
             "title": "Lumiere",
             "element": 5,
             "power": 725
         },
         {
-            "id": 49,
+            "id": 50,
             "title": "OSEF",
             "element": 5,
             "power": 745
         },
         {
-            "id": 50,
+            "id": 51,
             "title": "Terrain Feu 50",
             "type": 1,
             "element": 4,
             "power": 50
         },
         {
-            "id": 51,
-            "title": "Feu",
-            "type": 1,
-            "element": 4,
-            "power": 65
-        },
-        {
             "id": 52,
             "title": "Feu",
             "type": 1,
             "element": 4,
-            "power": 80
+            "power": 65
         },
         {
             "id": 53,
             "title": "Feu",
             "type": 1,
             "element": 4,
-            "power": 95
+            "power": 80
         },
         {
             "id": 54,
             "title": "Feu",
             "type": 1,
             "element": 4,
-            "power": 110
+            "power": 95
         },
         {
             "id": 55,
+            "title": "Feu",
+            "type": 1,
+            "element": 4,
+            "power": 110
+        },
+        {
+            "id": 56,
             "title": "Terrain Feu 120",
             "type": 1,
             "element": 4,
             "power": 120
         },
         {
-            "id": 56,
+            "id": 57,
             "title": "Feu",
             "type": 1,
             "element": 4,
             "power": 130
         },
         {
-            "id": 57,
+            "id": 58,
             "title": "Terrain Feu 140",
             "type": 1,
             "element": 4,
             "power": 140
         },
         {
-            "id": 58,
+            "id": 59,
             "title": "Feu",
             "element": 4,
             "power": 455
         },
         {
-            "id": 59,
+            "id": 60,
             "title": "Feu",
             "element": 4,
             "power": 480
         },
         {
-            "id": 60,
+            "id": 61,
             "title": "Feu",
             "element": 4,
             "power": 495
         },
         {
-            "id": 61,
+            "id": 62,
             "title": "Feu",
             "element": 4,
             "power": 535
         },
         {
-            "id": 62,
+            "id": 63,
             "title": "Feu",
             "element": 4,
             "power": 550
         },
         {
-            "id": 63,
+            "id": 64,
             "title": "Feu",
             "element": 4,
             "power": 580
         },
         {
-            "id": 64,
+            "id": 65,
             "title": "Feu",
             "element": 4,
             "power": 600
         },
         {
-            "id": 65,
+            "id": 66,
             "title": "Feu",
             "element": 4,
             "power": 650
         },
         {
-            "id": 66,
+            "id": 67,
             "title": "Feu",
             "element": 4,
             "power": 680
         },
         {
-            "id": 67,
+            "id": 68,
             "title": "Feu",
             "element": 4,
             "power": 685
         },
         {
-            "id": 68,
+            "id": 69,
             "title": "Feu",
             "element": 4,
             "power": 690
         },
         {
-            "id": 69,
+            "id": 70,
             "title": "OSEF",
             "element": 4,
             "power": 705
         },
         {
-            "id": 70,
+            "id": 71,
             "title": "Feu",
             "element": 4,
             "power": 715
         },
         {
-            "id": 71,
+            "id": 72,
             "title": "Feu",
             "element": 4,
             "power": 720
         },
         {
-            "id": 72,
+            "id": 73,
             "title": "Terrain Eau 50",
             "type": 1,
             "element": 3,
             "power": 50
         },
         {
-            "id": 73,
-            "title": "Eau",
-            "type": 1,
-            "element": 3,
-            "power": 65
-        },
-        {
             "id": 74,
             "title": "Eau",
             "type": 1,
             "element": 3,
-            "power": 80
+            "power": 65
         },
         {
             "id": 75,
             "title": "Eau",
             "type": 1,
             "element": 3,
-            "power": 95
+            "power": 80
         },
         {
             "id": 76,
             "title": "Eau",
             "type": 1,
             "element": 3,
-            "power": 110
+            "power": 95
         },
         {
             "id": 77,
+            "title": "Eau",
+            "type": 1,
+            "element": 3,
+            "power": 110
+        },
+        {
+            "id": 78,
             "title": "Terrain Eau 120",
             "type": 1,
             "element": 3,
             "power": 120
         },
         {
-            "id": 78,
+            "id": 79,
             "title": "Eau",
             "type": 1,
             "element": 3,
             "power": 130
         },
         {
-            "id": 79,
+            "id": 80,
             "title": "Terrain Eau 140",
             "type": 1,
             "element": 3,
             "power": 140
         },
         {
-            "id": 80,
+            "id": 81,
             "title": "Eau",
             "element": 3,
             "power": 450
         },
         {
-            "id": 81,
+            "id": 82,
             "title": "Eau",
             "element": 3,
             "power": 460
         },
         {
-            "id": 82,
+            "id": 83,
             "title": "Eau",
             "element": 3,
             "power": 475
         },
         {
-            "id": 83,
+            "id": 84,
             "title": "Eau",
             "element": 3,
             "power": 495
         },
         {
-            "id": 84,
+            "id": 85,
             "title": "Eau",
             "element": 3,
             "power": 535
         },
         {
-            "id": 85,
+            "id": 86,
             "title": "Eau",
             "element": 3,
             "power": 550
         },
         {
-            "id": 86,
+            "id": 87,
             "title": "Eau",
             "element": 3,
             "power": 580
         },
         {
-            "id": 87,
+            "id": 88,
             "title": "Eau",
             "element": 3,
             "power": 600
         },
         {
-            "id": 88,
+            "id": 89,
             "title": "Eau",
             "element": 3,
             "power": 650
         },
         {
-            "id": 89,
+            "id": 90,
             "title": "Eau",
             "element": 3,
             "power": 680
         },
         {
-            "id": 90,
+            "id": 91,
             "title": "Eau",
             "element": 3,
             "power": 695
         },
         {
-            "id": 91,
+            "id": 92,
             "title": "Eau",
             "element": 3,
             "power": 710
         },
         {
-            "id": 92,
+            "id": 93,
             "title": "Eau",
             "element": 3,
             "power": 715
         },
         {
-            "id": 93,
+            "id": 94,
             "title": "Eau",
             "element": 3,
             "power": 725
         },
         {
-            "id": 94,
+            "id": 95,
             "title": "Terrain Tenebre 50",
             "type": 1,
             "element": 2,
             "power": 50
         },
         {
-            "id": 95,
+            "id": 96,
             "title": "Tenebre",
             "type": 1,
             "element": 2,
             "power": 65
         },
         {
-            "id": 96,
+            "id": 97,
             "title": "Tenebre",
             "type": 1,
             "element": 2,
             "power": 80
         },
         {
-            "id": 97,
+            "id": 98,
             "title": "Tenebre",
             "type": 1,
             "element": 2,
             "power": 95
         },
         {
-            "id": 98,
+            "id": 99,
             "title": "Tenebre",
             "type": 1,
             "element": 2,
             "power": 110
         },
         {
-            "id": 99,
+            "id": 100,
             "title": "Terrain Tenebre 120",
             "type": 1,
             "element": 2,
             "power": 120
         },
         {
-            "id": 100,
+            "id": 101,
             "title": "Tenebre",
             "type": 1,
             "element": 2,
             "power": 130
         },
         {
-            "id": 101,
+            "id": 102,
             "title": "Terrain Tenebre 140",
             "type": 1,
             "element": 2,
             "power": 140
         },
         {
-            "id": 102,
+            "id": 103,
             "title": "Tenebre",
             "element": 2,
             "power": 455
         },
         {
-            "id": 103,
-            "title": "Tenebre",
-            "element": 2,
-            "power": 470
-        },
-        {
             "id": 104,
             "title": "Tenebre",
             "element": 2,
-            "power": 535
+            "power": 470
         },
         {
             "id": 105,
@@ -680,302 +680,308 @@
             "id": 106,
             "title": "Tenebre",
             "element": 2,
-            "power": 550
+            "power": 535
         },
         {
             "id": 107,
             "title": "Tenebre",
             "element": 2,
-            "power": 580
+            "power": 550
         },
         {
             "id": 108,
             "title": "Tenebre",
             "element": 2,
-            "power": 600
+            "power": 580
         },
         {
             "id": 109,
             "title": "Tenebre",
             "element": 2,
-            "power": 650
+            "power": 600
         },
         {
             "id": 110,
             "title": "Tenebre",
             "element": 2,
-            "power": 685
+            "power": 650
         },
         {
             "id": 111,
             "title": "Tenebre",
             "element": 2,
-            "power": 690
+            "power": 685
         },
         {
             "id": 112,
             "title": "Tenebre",
             "element": 2,
-            "power": 700
+            "power": 690
         },
         {
             "id": 113,
             "title": "Tenebre",
             "element": 2,
-            "power": 710
+            "power": 700
         },
         {
             "id": 114,
             "title": "Tenebre",
             "element": 2,
-            "power": 715
+            "power": 710
         },
         {
             "id": 115,
             "title": "Tenebre",
             "element": 2,
-            "power": 725
+            "power": 715
         },
         {
             "id": 116,
             "title": "Tenebre",
             "element": 2,
-            "power": 740
+            "power": 725
         },
         {
             "id": 117,
+            "title": "Tenebre",
+            "element": 2,
+            "power": 740
+        },
+        {
+            "id": 118,
             "title": "Terrain Terre 50",
             "type": 1,
             "element": 1,
             "power": 50
         },
         {
-            "id": 118,
-            "title": "Terre",
-            "type": 1,
-            "element": 1,
-            "power": 65
-        },
-        {
             "id": 119,
             "title": "Terre",
             "type": 1,
             "element": 1,
-            "power": 80
+            "power": 65
         },
         {
             "id": 120,
             "title": "Terre",
             "type": 1,
             "element": 1,
-            "power": 95
+            "power": 80
         },
         {
             "id": 121,
             "title": "Terre",
             "type": 1,
             "element": 1,
-            "power": 110
+            "power": 95
         },
         {
             "id": 122,
+            "title": "Terre",
+            "type": 1,
+            "element": 1,
+            "power": 110
+        },
+        {
+            "id": 123,
             "title": "Terrain Terre 120",
             "type": 1,
             "element": 1,
             "power": 120
         },
         {
-            "id": 123,
+            "id": 124,
             "title": "Terre",
             "type": 1,
             "element": 1,
             "power": 130
         },
         {
-            "id": 124,
+            "id": 125,
             "title": "Terrain Terre 140",
             "type": 1,
             "element": 1,
             "power": 140
         },
         {
-            "id": 125,
+            "id": 126,
             "title": "Terre",
             "element": 1,
             "power": 455
         },
         {
-            "id": 126,
+            "id": 127,
             "title": "Terre",
             "element": 1,
             "power": 475
         },
         {
-            "id": 127,
+            "id": 128,
             "title": "Terre",
             "element": 1,
             "power": 490
         },
         {
-            "id": 128,
+            "id": 129,
             "title": "Terre",
             "element": 1,
             "power": 500
         },
         {
-            "id": 129,
+            "id": 130,
             "title": "Terre",
             "element": 1,
             "power": 550
         },
         {
-            "id": 130,
+            "id": 131,
             "title": "Terre",
             "element": 1,
             "power": 580
         },
         {
-            "id": 131,
+            "id": 132,
             "title": "Terre",
             "element": 1,
             "power": 600
         },
         {
-            "id": 132,
+            "id": 133,
             "title": "Terre",
             "element": 1,
             "power": 650
         },
         {
-            "id": 133,
+            "id": 134,
             "title": "Terre",
             "element": 1,
             "power": 680
         },
         {
-            "id": 134,
+            "id": 135,
             "title": "Terre",
             "element": 1,
             "power": 685
         },
         {
-            "id": 135,
+            "id": 136,
             "title": "Terre",
             "element": 1,
             "power": 700
         },
         {
-            "id": 136,
+            "id": 137,
             "title": "Terre",
             "element": 1,
             "power": 715
         },
         {
-            "id": 137,
+            "id": 138,
             "title": "Terre",
             "element": 1,
             "power": 730
-        },
-        {
-            "id": 138,
-            "title": "Nature",
-            "type": 1,
-            "element": 0,
-            "power": 50
         },
         {
             "id": 139,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 65
+            "power": 50
         },
         {
             "id": 140,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 80
+            "power": 65
         },
         {
             "id": 141,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 95
+            "power": 80
         },
         {
             "id": 142,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 110
+            "power": 95
         },
         {
             "id": 143,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 120
+            "power": 110
         },
         {
             "id": 144,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 130
+            "power": 120
         },
         {
             "id": 145,
             "title": "Nature",
             "type": 1,
             "element": 0,
-            "power": 140
+            "power": 130
         },
         {
             "id": 146,
             "title": "Nature",
+            "type": 1,
             "element": 0,
-            "power": 465
+            "power": 140
         },
         {
             "id": 147,
             "title": "Nature",
             "element": 0,
-            "power": 485
+            "power": 465
         },
         {
             "id": 148,
             "title": "Nature",
             "element": 0,
-            "power": 520
+            "power": 485
         },
         {
             "id": 149,
             "title": "Nature",
             "element": 0,
-            "power": 680
+            "power": 520
         },
         {
             "id": 150,
             "title": "Nature",
             "element": 0,
-            "power": 685
+            "power": 680
         },
         {
             "id": 151,
-            "title": "OSEF",
+            "title": "Nature",
             "element": 0,
-            "power": 695
+            "power": 685
         },
         {
             "id": 152,
             "title": "OSEF",
             "element": 0,
-            "power": 720
+            "power": 695
         },
         {
             "id": 153,
+            "title": "OSEF",
+            "element": 0,
+            "power": 720
+        },
+        {
+            "id": 154,
             "title": "OSEF",
             "element": 0,
             "power": 735

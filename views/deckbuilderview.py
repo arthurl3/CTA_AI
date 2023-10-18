@@ -39,7 +39,7 @@ class DeckbuilderView(customtkinter.CTkFrame):
 
 
         # Card selection zone
-        self.cardselector = customtkinter.CTkFrame(self, fg_color='#9B2335')
+        self.cardselector = customtkinter.CTkScrollableFrame(self, fg_color='#9B2335', height=500)
         self.cardselector.columnconfigure(tuple(range(15)), weight=1)
         self.cardselector.rowconfigure(tuple(range(4)), weight=1)
         self.cardselector.grid(row=4, column=0, sticky="news")
@@ -70,7 +70,6 @@ class DeckbuilderView(customtkinter.CTkFrame):
                 # Add delete method when clicked
                 cw.configure(command=lambda cardview=cw: self.deckbuilder_viewmodel.remove_card_from_deck(cardview))
                 cw.grid(row=y, column=x)
-
 
         self.deckbuilder_viewmodel.draw_cardselector()
 

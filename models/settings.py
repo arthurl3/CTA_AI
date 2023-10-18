@@ -4,8 +4,8 @@ class Settings:
         self.score2win = 65
         self.affix1 = None  # No affix by default
         self.affix2 = None
-        self.deck_host = "Test"
-        self.deck_guest = "Test"
+        self.deck_host = "Field Feu"
+        self.deck_guest = "Field Feu"
         self.mode = 0 # 0 : Player vs IA, 1 : IA Assist (Mode selection not implemented in UI for now)
 
     def __str__(self):
