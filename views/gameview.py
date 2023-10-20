@@ -80,7 +80,7 @@ class GameView(customtkinter.CTkFrame):
 
     def update(self):
         self.draw_btn.configure(text=f"DRAW\n{self.game_viewmodel.draw_host_allowed}")
-        self.score.configure(text=f"SCORE : HOST {self.game_viewmodel.score_host} - {self.game_viewmodel.score_guest} GUEST")
+        self.score.configure(text=f"SCORE : HOST {self.game_viewmodel.get_host_score()} - {self.game_viewmodel.get_guest_score()} GUEST")
         self.board_widget.update()
         self.hand_widget.update()
 

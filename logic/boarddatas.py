@@ -12,7 +12,7 @@ Exemple:  carte = {'element': 0, 'initial_pow': 450, 'current_pow': 550, 'owned_
 '''
 
 
-class BoardModel(nx.Graph):
+class BoardDatas(nx.Graph):
     def __init__(self, **attr):
         super().__init__(**attr)
 
@@ -24,30 +24,23 @@ class BoardModel(nx.Graph):
         self.p2_control_leader = False
 
         # FIELD HANDLING
-        self.field_play = False
         self.field_turn_left = 0
         self.field_power = 0
         self.field_element = -1
 
-        self.special_ability_p1 = None
-        self.special_ability_p2 = None
-        self.hand_host = []
-        self.hand_guest = []
-        # Sert à calculer si on appelle la fonction de calcul des points ou non dans le calcul d'affinité
-        self.pos_flag = True
 
     # Ajoute les les aretes au fur et à mesure
     def add_edges(self, position):
         x = position % 4
         to_add = []
 
-        if position > 4:
+        if position > 3:
             to_add.append(position - 4)
-        if x == 3:
+        if x < 3:
             to_add.append(position + 1)
         if position < 12:
             to_add.append(position + 4)
-        if x == 0:
+        if x > 0:
             to_add.append(position - 1)
 
         for i_node in to_add:

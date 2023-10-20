@@ -15,7 +15,7 @@ class BoardWidget(customtkinter.CTkFrame):
         self.columnconfigure(tuple(range(16)), weight=1)
 
         p, x, y = 0, 0, 0
-        for card in viewmodel.board:
+        for card in viewmodel.get_board():
             cw = CardWidget(self, card, owner=True)
             self.cardwidgets.append(cw)
             cw.grid(row=y, column=x, padx=10, pady=(5, 5), sticky="n")
@@ -31,11 +31,9 @@ class BoardWidget(customtkinter.CTkFrame):
     def play_card(self, pos):
         self.viewmodel.play_card(pos)
 
-
     def update(self):
+        board = self.viewmodel.get_board()
         for pos in range(16):
-            self.cardwidgets[pos].card = self.viewmodel.board[pos]
+            self.cardwidgets[pos].card = board[pos]
             if self.cardwidgets[pos].card:
                 self.cardwidgets[pos].update()
-
-

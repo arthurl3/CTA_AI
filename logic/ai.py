@@ -1,114 +1,151 @@
 import copy
 import time
-from logic.boardgraph import BoardGraph
+from logic.party import Party
 
-counter = 0
-bg = BoardGraph()
 
-def evaluer(position):
-    if position.datas.current_player:
-        return position.datas.score_p1 - position.datas.score_p2
-    else:
-        return position.datas.score_p2 - position.datas.score_p1
+class AI:
+    def __init__(self, board):
+        self.initial_board = board
+        self.party = copy.deepcopy(board)
+        self.counter = 0
 
-# Fonction Minimax
-def minimax(position, profondeur, maximisant):
-    if profondeur == 0:
-        return evaluer(position)
+    def evaluer(self, position):
+        # Calcul du nombre de noeud final
+        self.counter += 1
+        if position.position_datas.current_player:
+            return position.position_datas.score_p1 - position.position_datas.score_p2
+        else:
+            return position.position_datas.score_p2 - position.position_datas.score_p1
 
-    if maximisant:
+    # Fonction Minimax
+    def minimax(self, position, profondeur, maximisant):
+        if profondeur == 0:
+            return self.evaluer(position)
+
+        if maximisant:
+            meilleur_score = -float("inf")
+            for coup in self.coups_possibles(position):
+                score = self.minimax(coup, profondeur - 1, False)
+                meilleur_score = max(meilleur_score, score)
+            return meilleur_score
+        else:
+            pire_score = float("inf")
+            for coup in self.coups_possibles(position):
+                score = self.minimax(coup, profondeur - 1, True)
+                pire_score = min(pire_score, score)
+            return pire_score
+
+    # Fonction pour obtenir les coups possibles (à adapter selon le jeu)
+    def coups_possibles(self, position):
+        coups = []
+        self.party.board_datas = position.position_datas
+        cells_index = self.party.get_empty_cells()
+
+        if position.position_datas.current_player:
+            hand = position.hand_p1[:]
+        else:
+            hand = position.hand_p2[:]
+
+        for cell in cells_index:
+            for card in hand:
+                if not card.field:
+                    if position.position_datas.current_player:
+                        hand_p1 = hand[:]
+                        hand_p1.remove(card)
+                        coup = Position(copy.deepcopy(position.position_datas), hand_p1, position.hand_p2[:])
+                        self.party.board_datas = coup.position_datas
+                        self.party.play_card(card, cell)
+                        coups.append(coup)
+                    else:
+                        hand_p2 = hand[:]
+                        hand_p2.remove(card)
+                        coup = Position(copy.deepcopy(position.position_datas), position.hand_p1[:], hand_p2)
+                        self.party.board_datas = coup.position_datas
+                        self.party.play_card(card, cell)
+                        coups.append(coup)
+        return coups
+
+    def start_ai(self):
+        meilleur_coup = None
         meilleur_score = -float("inf")
-        for coup in coups_possibles(position):
-            score = minimax(coup, profondeur - 1, False)
-            meilleur_score = max(meilleur_score, score)
-        return meilleur_score
-    else:
-        pire_score = float("inf")
-        for coup in coups_possibles(position):
-            score = minimax(coup, profondeur - 1, True)
-            pire_score = min(pire_score, score)
-        return pire_score
+        profondeur = 1
 
-# Fonction pour obtenir les coups possibles (à adapter selon le jeu)
-def coups_possibles(position):
-    global counter
-    coups = []
-    bg.model = position.datas
-    cells_index = bg.get_empty_cells()
+        hand_p1 = self.party.static_datas.deck_p1[:6]
+        hand_p2 = self.party.static_datas.deck_p2[:6]
 
-    if position.datas.current_player:
-        hand = position.hand_p1[:]
-    else:
-        hand = position.hand_p2[:]
+        datas = copy.deepcopy(self.party.board_datas)
+        position_initiale = Position(datas, hand_p1, hand_p2)
 
-    for cell in cells_index:
-        for card in hand:
-            if not card.field:
-                if position.datas.current_player:
-
-                    hand_p1 = hand[:]
-                    hand_p1.remove(card)
-                    coup = Position(copy.deepcopy(position.datas), hand_p1, position.hand_p2[:], card=card, cell=cell)
-                    bg.model = coup.datas
-                    bg.play_card(card, cell)
-                    coups.append(coup)
-                else:
-                    counter += 1
-                    hand_p2 = hand[:]
-                    hand_p2.remove(card)
-                    coup = Position(copy.deepcopy(position.datas), position.hand_p1[:], hand_p2, card=card, cell=cell)
-                    bg.model = coup.datas
-                    bg.play_card(card, cell)
-                    coups.append(coup)
+        if len(self.initial_board.get_empty_cells()) == 1:
+            profondeur = 0
 
 
+        # Start time
+        temps_debut = time.time()
 
-    # À adapter pour générer les coups possibles en fonction de la position
-    return coups
+        for coup in self.coups_possibles(position_initiale):
+            score = self.minimax(coup, profondeur=profondeur, maximisant=True)
+            if score > meilleur_score:
+                meilleur_score = score
+                meilleur_coup = coup
 
-def start_ai(position, hand_host, hand_guest):
-    initial_position = copy.deepcopy(position)
-    position_initiale = Position(initial_position, hand_host[:], hand_guest[:])
-    meilleur_coup = None
-    meilleur_score = -float("inf")
-    profondeur = 1
-    # Enregistrez le temps de départ
-    temps_debut = time.time()
+        # End time
+        temps_fin = time.time()
+        temps_ecoule = temps_fin - temps_debut
 
-    for coup in coups_possibles(position_initiale):
-        score = minimax(coup, profondeur=profondeur, maximisant=False)
-        if score > meilleur_score:
-            meilleur_score = score
-            meilleur_coup = coup
+        ###  RESULTS ###
+        print(f"Profondeur d'exploration : {profondeur}")
+        print("Temps écoulé : {:.6f} secondes".format(temps_ecoule))
+        if temps_ecoule > float(0):
+            print(f"A évalué {self.counter} positions, soit {self.counter // temps_ecoule} évaluations par secondes")
+        print("Meilleur coup :", meilleur_coup)
+        print("Meilleur score :", meilleur_score)
+        ################
 
-    temps_fin = time.time()
-    temps_ecoule = temps_fin - temps_debut
+        self.party.board_datas = meilleur_coup.position_datas
+        (meilleur_coup_position, meilleur_coup_card) = self.get_play(meilleur_coup.position_datas)
+        return meilleur_coup_position, meilleur_coup_card
 
-
-    ###  RESULTS ###
-    print(f"Profondeur d'exploration : {profondeur}")
-    print("Temps écoulé : {:.6f} secondes".format(temps_ecoule))
-    if temps_ecoule > float(0):
-        print(f"A évalué {counter} positions, soit {counter//temps_ecoule} évaluations par secondes")
-    print("Meilleur coup :", meilleur_coup)
-    print("Meilleur score :", meilleur_score)
-    ################
-
-    return meilleur_coup.coup_card, meilleur_coup.coup_cell
-
-
-# OPTIMISATION - Au lieu de stocker le coup dans une position, on cherche le noeud qui était vide mais ne l'est plus
-# def get_coup(self, position):
-#     for i in range(16):
-#         if position.datas.nodes['data']['id'] != -1:
-#             if self.initial_position.model.nodes[i]['data']['id'] =! position.datas.nodes['data']['id']:
-#                 pass
-
+    # OPTIMISATION - Au lieu de stocker le coup dans une position, on cherche le noeud qui était vide mais ne l'est plus en comparant le board au tour t et t+1
+    def get_play(self, board_next):
+        for i_node in board_next.nodes:
+            if not self.initial_board.board_datas.has_node(i_node):
+                return i_node, self.party.get_card_from_node(i_node)
 
 class Position:
-    def __init__(self, boarddata, h_p1, h_p2, card=None, cell=None):
-        self.datas = boarddata
+    def __init__(self, position_datas, h_p1, h_p2):
+        self.position_datas = position_datas
         self.hand_p1 = h_p1
         self.hand_p2 = h_p2
-        self.coup_card = card
-        self.coup_cell = cell
+
+    '''
+    # # Fonction qui calcule obtenir les coups possibles
+    def coups_possibles(self, position):
+        coups = []
+        self.party.board_datas = position
+        cells_index = self.party.get_empty_cells()
+
+        if position.current_player:
+            hand = position.hand_p1
+        else:
+            hand = position.hand_p2
+
+        for cell in cells_index:
+
+            for card in hand:
+                if not card.field:
+                    coup = copy.deepcopy(position)
+                    if position.current_player:
+                        hand_p1 = hand[:]
+                        hand_p1.remove(card)
+                        self.party.board_datas = coup
+                        self.party.play_card(card, cell)
+                    else:
+                        hand_p2 = hand[:]
+                        hand_p2.remove(card)
+                        self.party.board_datas = coup
+                        self.party.play_card(card, cell)
+                    coups.append(coup)
+
+        return coups
+    '''

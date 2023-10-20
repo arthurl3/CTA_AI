@@ -13,7 +13,7 @@ class DrawnCardWidget(customtkinter.CTkFrame):
         self.label1 = customtkinter.CTkLabel(self, text="DRAWN CARD : ", font=FONT)
         self.label1.grid(row=0, column=0)
 
-        cards = self.viewmodel.deck_host
+        cards = self.viewmodel.deck_host_repr
 
         # Supprimer les occurrences de None
         cards_purified = [card.__str__(option_format=True) for card in cards if card is not None]

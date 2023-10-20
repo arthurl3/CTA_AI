@@ -6,7 +6,7 @@ import copy
 # Return a list of all existing cards object
 def load_cards():
     #Tris en Debug pour garder le fichier propre
-    sort_cards()
+    #sort_cards()
     cards = []
     with open(Config.CARDS_DATA_PATH) as file:
         data = json.load(file)
