@@ -1,5 +1,4 @@
 from random import shuffle
-
 import loader
 
 
@@ -24,7 +23,12 @@ class StaticBoardDatas:
 
     # DECK LOADING
     def load_deck(self, deck_name, player):
-        (deck, sa) = loader.load_deck(deck_name)
+        (deck_card, sa) = loader.load_deck(deck_name)
+
+        deck = []
+        # Conversion from card to node datas
+        for card in deck_card:
+            deck.append(self.get_node_data_from_card(card))
 
         # Le leader reste à l'index 0
         leader = deck[0]
@@ -41,7 +45,7 @@ class StaticBoardDatas:
             self.special_ability_p2 = sa
 
             for card in self.deck_p2:
-                card.owned_by_p1 = False
+                card['owned_by_p1'] = False
 
     def remove_card_from_deck(self, id, player):
         if player == 1:
@@ -49,5 +53,10 @@ class StaticBoardDatas:
         else:
             deck = self.deck_p2
         for card in deck:
-            if card.id == id:
+            if card['id'] == id:
                 deck.remove(card)
+
+    def get_node_data_from_card(self, card):
+        return {'id': card.id, 'element': card.element, 'initial_pow': card.initial_power,
+                'current_pow': card.current_power, 'owned_by_p1': card.owned_by_p1,
+                'leader': card.leader, 'original_owner': card.owned_by_p1, 'field': card.field}

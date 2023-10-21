@@ -47,7 +47,8 @@ class GameViewModel:
             return
 
         print(self.selected_card)
-        self.party.play_card(self.selected_card, position)
+        # Conversion before playing
+        self.party.play_card(self.party.static_datas.get_node_data_from_card(self.selected_card), position)
         self.draw()
         self.update_deck_host_repr()
         self.view.update()
@@ -108,9 +109,9 @@ class GameViewModel:
 
     def update_deck_host_repr(self):
         if self.host_is_p1:
-            self.deck_host_repr = self.party.static_datas.deck_p1[:6]
+            self.deck_host_repr = self.party.get_hand(player=1)
         else:
-            self.deck_host_repr = self.party.static_datas.deck_p2[:6]
+            self.deck_host_repr = self.party.get_hand(player=2)
 
     # When a player click on a card in his hand
     def set_selected(self, card):
